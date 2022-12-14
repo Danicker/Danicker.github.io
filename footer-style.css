@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css?family=Dancing%20Script");
+
+body {
+    font-family: arial;
+    color: white;
+    background-color: rgb(90,0,0);
+
+    padding: 10px;
+    margin: 0;
+    display: flex;
+}
+
+div {
+    flex-grow: 1;
+    display: inline-block;
+}
+
+#footer-tag {
+    font-family: dancing script;
+    font-style: italic;
+    font-size: 1.6em;
+    
+    margin: auto;
+    padding-left: 3%;
+}
+
+div strong {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+div a {
+    display: block;
+    font-size: 0.8em;
+    color: white; /* overwrite hyperlink colouring */
+}

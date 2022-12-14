@@ -1,0 +1,26 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+
+    /* Font */
+    font-family: arial;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    font-size: 5vw;
+    
+    /* Background */
+    background-image: url("images/twhg3 composit L5.png");
+    background-size: cover;
+    background-position: 50% 88%;
+    background-color: rgba(0, 0, 0, .65);
+    background-blend-mode: multiply;
+
+    /* Padding */
+    outline: 2px solid black;
+    padding: 4px;
+
+}

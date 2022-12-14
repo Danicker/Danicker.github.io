@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: roboto;
+    background-color: #222222;
+    padding: 8px;
+}
+
+.dropdown {
+    transition: height .4s;
+    height: 0;
+    overflow: hidden;
+}
+
+.category {
+    cursor: pointer;
+}
+
+.title {
+    display: block;
+    transition: color 0.1s;
+    padding: 3px;
+    font-size: 1.4em;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.title:not(hover) {
+    color: #aaaaaa;
+}
+
+.title:not(.nolink):hover {
+    color: #dddddd;
+}
+
+.dropdown a {
+    text-decoration: none;
+    display: block;
+    font-size: 1em;
+    padding-left: 8px;
+}
+
+.dropdown a:not(hover) {
+    color: #aaaaaa;
+}
+
+.dropdown a:not(.nolink):hover {
+    color: #dddddd;
+}
+
+a.nolink {
+    cursor: default;
+    color: #666666;
+}
+
+.dropdown a.nolink { /* .dropdown specificity required to override previous styles */
+    cursor: default;
+    color: #666666;
+}
