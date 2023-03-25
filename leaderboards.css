@@ -1,0 +1,11 @@
+#loading-bar-container {
+    border: 1px solid #eeeeee;
+    height: 10px;
+    width: 300px;
+}
+
+#loading-bar {
+    background-color: #eeeeee;
+    height: 100%;
+    width: 0%;
+}

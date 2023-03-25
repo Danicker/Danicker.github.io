@@ -52,9 +52,13 @@ b {
 }
 
 ul {
-    margin-top: 10px;
+    margin-top: 6px;
     margin-left: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+}
+
+li ul {
+    margin-top: 0px;
 }
 
 note {
