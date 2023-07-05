@@ -1395,6 +1395,14 @@ function attemptSetCheckboxFromParams(node, name, params) {
     }
 }
 
+function copyTextToClipboard(text) {
+    if (navigator.clipboard && false) {
+        navigator.clipboard.writeText(text);
+    } else {
+        prompt("Here is your link:", text);
+    }
+}
+
 // SELECTOR SYSTEM IS WORKING, but some notes:
 // - variables hold their value but often similar variables have different IDs, 
 //   so value is not carried over, e.g. whg2 2.0/2.1 or multiwhg any%/100%
@@ -1825,7 +1833,7 @@ function initSelectors() {
     // Set go button onclick and generate default leaderboard
     document.getElementById("go-button").onclick = go;
     document.getElementById("share-button").onclick = function() {
-        navigator.clipboard.writeText(getLink());
+        copyTextToClipboard(getLink());
     }
     document.getElementById("refresh-button").onclick = function() {
         window.parent.location.assign(getLink());
