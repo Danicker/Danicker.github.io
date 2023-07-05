@@ -79,18 +79,3 @@ iframe {
     margin-top: 15px;
     margin-bottom: 10px;
 }
-
-table {
-    border-collapse: collapse;
-}
-
-th {
-    font-weight: bold;
-    padding: 5px 20px 5px 10px;
-    border-bottom: 2px solid #aaaaaa;
-}
-
-td {
-    border-top: 1px solid #aaaaaa;
-    padding: 5px 20px 5px 10px;
-}

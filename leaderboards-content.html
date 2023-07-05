@@ -5,51 +5,122 @@
         <link rel="stylesheet" href="leaderboards.css">
     </head>
     <body>
-
-        <h1>Leaderboards</h1>
-        <p>Here are links to the IL leaderboards for TWHG1 and TWHG2:</p>
-        <ul>
-            <li><a target="_blank" href="https://editor.p5js.org/Danicker/full/dLtHVZGMs">TWHG1 Leaderboard (includes SOB)</a></li>
-            <li><a target="_blank" href="https://editor.p5js.org/Danicker/full/bQtyxE8gL">TWHG2 Leaderboard</a></li>
-        </ul>
-        <note>This page is incomplete. More leaderboards will be added and they will be embedded here rather than through p5.js</note>
-
-        <!--
-        <br>
-        <p>v v v <b>Everything below here is for testing purposes</b> v v v</p>
-        <br>
-
-        <table>
-            <tr>
-                <th>Player</th>
-                <th>1st</th>
-                <th>2nd</th>
-                <th>3rd</th>
-            </tr>
-            <tr>
-                <td>vowels</td>
-                <td>29</td>
-                <td>1</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>hsblue</td>
-                <td>27</td>
-                <td>2</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>TheMe</td>
-                <td>25</td>
-                <td>2</td>
-                <td>1</td>
-            </tr>
-        </table>
-
-        <div id="loading-bar-container">
-            <div id="loading-bar"></div>
+        
+        <!-- LOADING PAGE -->
+        <div id="loading-page">
+            <div>
+                <div id="loading-text">LOADING...</div>
+                <div id="loading-bar-container">
+                    <div id="loading-bar"></div>
+                </div>
+            </div>
         </div>
-        -->
+
+        <!-- MAIN PAGE -->
+        <div id="main-page">
+
+            <h1>Custom Leaderboards</h1>
+
+            <!-- Selectors -->
+            <h3>Leaderboard type</h3>
+            <div id="leaderboard-type-selector-container"></div>
+
+            <div id="single-category-div">
+                <h3>Category</h3>
+                <div id="selection-container"></div>
+            </div>
+            
+            <div id="multi-category-div" hidden="true">
+                <h3>Category Group</h3>
+                <div id="multi-category-div-inner">
+                    <div>
+                        <h4>Games</h4>
+                        <div id="checkboxes-games" class="checkbox-column"></div>
+                    </div>
+                    <div>
+                        <h4>Scope</h4>
+                        <div id="checkboxes-scope" class="checkbox-column"></div>
+                    </div>
+                    <div>
+                        <h4>Main Categories</h4>
+                        <div id="checkboxes-categories-main" class="checkbox-column"></div>
+                    </div>
+                    <div>
+                        <h4>Glitched Categories</h4>
+                        <div id="checkboxes-categories-glitched" class="checkbox-column"></div>
+                    </div>
+                    <div hidden>
+                        <h4>Multi WHG Categories</h4>
+                        <div id="checkboxes-categories-multi" class="checkbox-column"></div>
+                    </div>
+                    <div hidden>
+                        <h4>Category Extensions</h4>
+                        <div id="checkboxes-categories-ext" class="checkbox-column"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="other-options-div">
+                <h3>Other Options</h3>
+                <div id="other-options-div-inner">
+
+                    <div>
+                        <h4>Verification Status</h4>
+                        <div id="checkboxes-status" class="checkbox-column"></div>
+                    </div>
+        
+                    <div>
+                        <h4>Date Achieved</h4>
+                        <input type="date" id="date-start">
+                        <span>to</span>
+                        <br>
+                        <input type="date" id="date-end">
+                        <span>(inclusive)</span>
+                        <br>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <button id="go-button">Generate</button>
+            <button id="share-button">Copy Link</button>
+            <button id="refresh-button">Refresh</button>
+            <br>
+    
+            <!-- Table -->
+            <h2>Leaderboard</h2>
+            <div id="table-container"></div><br>
+
+            <!-- Info -->
+            <h2>How to use</h2>
+            This search tool uses data from <a target="_blank" href="https://speedrun.com">speedrun.com</a> to generate custom leaderboards according to various parameters which you can control. There are four leaderboard types:
+            <ul>
+                <li><b>Normal Leaderboard:</b> Sorts runs by lowest time, if multiple categories are selected then still sorts by lowest time, including each players' personal best for each category.</li>
+                <li><b>Sum of Best:</b> Sorts by the sum of a player's best times for a set of categories. Note that transition times between levels in TWHG1 and TWHG2 are factored into the calculations of these sums.</li>
+                <li><b>Medal Counts:</b> Sorts by WRs, 2nds and 3rds achieved by each player in a given set of categories. Note that 4ths, 5ths, etc. are also considered in the rankings but not displayed. Note that some columns may add up to more than the number of categories due to WR ties.</li>
+                <li><b>Recent Runs:</b> Sorts runs by most recent. Obsolete runs are included. Useful for seeing the history of a particular category or set of categories</li>
+            </ul>
+            Leaderboards can be generated for a single category or set of categories:
+            <ul>
+                <li><b>Single Category:</b> Allows you to select a single category by specifying the game, level (if applicable), category and subcategories (if applicable).</li>
+                <li><b>Multiple Categories:</b> Allows you to select a set of categories. You can include level runs, full-game runs or both. Note that glitchless leaderboards are considered to fall under the "glitched" category where no specific leaderboard for glitched runs exists. Similarly, TWHG1 runs are considered to be "Any%" and "100%", TWHG2 runs are considered "Any%" while TWHG2.1 runs are considered "100%". The reason for these allocations is to align with multiwhg categories.</li>
+            </ul>
+            Other options include:
+            <ul>
+                <li><b>Verification Status:</b> Unlike my previous leaderboard designs, you can now view runs that have not been verified. This is useful if you want to see what the leaderboard will look like once all pending runs are verified. To do this, simply tick the "unverified" box. Be warned that unverified runs are frequently illegitimate or inaccurate so leaderboards generated this way are not reliable. Also, there is the option to include rejected runs... if you have some reason to do so.</li>
+                <li><b>Date Range:</b> You have the option to set a date range. Only runs within the date range will be considered when the leaderboard is generated. This is useful for seeing what a leaderbaord looked like at some point in the past, or analysing the community activity within a certain window of time.</li>
+            </ul>
+            Buttons:
+            <ul>
+                <li>Click the <b>Generate</b> button to generate the leaderboard.</li>
+                <li>Click the <b>Copy Link</b> button to copy a link to your leaderbaord. This link contains all the information about your search parameters and can be shared with others.</li>
+                <li>Click the <b>Refresh</b> button to refresh the leaderboard with the current parameters. Refresh the page if you wish to revert to the leaderboard contained in the url. Click "Custom Leaderboards" in the side navigation if you wish to completely reset the leaderboard to default parameters.</li>
+            </ul>
+            <p>Any bugs or suggestions please contact Danicker on discord.</p>
+            <br>
+            <p><note>The speedrun.com API documentation can be found <a target="_blank" href="https://github.com/speedruncomorg/api">here</a>.</note></p>
+            <br>
+        </div>
 
         <script src="leaderboards.js"></script>
     </body>

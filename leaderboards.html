@@ -11,11 +11,14 @@
         </div>
         <div class="body">
             <iframe class="sidenav" src="sidenav.html"></iframe>
-            <iframe class="content" src="leaderboards-content.html"></iframe>
+            <iframe class="content"></iframe>
         </div>
         <div class="footer">
             <iframe class="footer" src="footer.html"></iframe>
         </div>
+        <script>
+            document.querySelector(".body .content").src = "leaderboards-content.html" + window.location.search;
+        </script>
         <script src="main-layout.js"></script>
     </body>
 </html>
