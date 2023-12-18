@@ -43,6 +43,13 @@ h4 {
     margin-bottom: 0px;
 }
 
+h5 {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
 i {
     font-style: italic;
 }

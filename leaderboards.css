@@ -174,6 +174,34 @@ button:hover {
     background-color: rgb(110,10,10);
 }
 
+/* TOOL TIPS */
+/* .tooltip {
+    border-bottom: 1px dotted black;
+} */
+
+.tooltip {
+    cursor: none;
+}
+
+.tooltiptext {
+    background: black;
+    border: 2px solid rgb(90,0,0);
+    padding: 3px;
+    margin: 2px;
+    color: rgb(120,120,120);
+    position: absolute;
+    white-space: pre-line;
+    font-weight: normal;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
 /* GENERIC TABLE STYLE */
 table {
     border-collapse: collapse;
@@ -188,6 +216,7 @@ th {
 table td, table th {
     border: 1px solid #aaaaaa;
     padding: 5px 20px 5px 10px;
+    text-align: left;
 }
 
 /* ROW CLASSES */
@@ -214,3 +243,8 @@ table td, table th {
 .column-player {
     text-align: left;
 }
+
+/* GRAPHICS */
+/* #graphics-canvas {
+    border: 1px solid yellow;
+} */

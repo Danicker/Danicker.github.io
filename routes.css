@@ -1,0 +1,64 @@
+/* DEBUG */
+.debug {
+    border: 1px solid red;
+}
+
+/* #div1 {
+    border: 1px solid aqua;
+}
+
+#div2 {
+    border: 1px solid lime;
+} */
+
+/* HEADERS */
+.arrow-button {
+    font-size: 80%;
+}
+
+.arrow-button:hover {
+    color: #ccc;
+    cursor: pointer;
+    user-select: none;
+}
+
+#game-header {
+    display: inline-block;
+    width: 130px;
+    text-align: center;
+}
+
+#level-header {
+    display: inline-block;
+    min-width: 100px;
+    text-align: center;
+}
+
+/* HORIZONTAL FORMAT */
+.route-container-horizontal {
+    height: 180px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.route-horizontal {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.route-selected {
+    border: 2px solid rgb(150,30,30);
+}
+
+.route-description-horizontal {
+    margin-left: 6px;
+    overflow: hidden;
+}
+
+/* ELEMENTS FORMAT */
+.route-resolutions {
+    color: #aaa;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

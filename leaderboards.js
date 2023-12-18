@@ -1,12 +1,4 @@
-//////////////
-// PREAMBLE //
-//////////////
-
-// CONSTANTS
-const SRC_API = "https://www.speedrun.com/api/v1/";
-const SRC_COM = "https://www.speedrun.com/";
-const SRC_MAX = 200;
-const SERIES = "whg";
+console.log("SCRIPT LOADED: leaderboards-data.js");
 
 var IDS = {
     "games": {
@@ -482,6 +474,7 @@ var IDS = {
     }]
 }
 
+
 // TYPES of VARIABLES
 /*
 Scope:
@@ -506,630 +499,1213 @@ Mandatory:
 */
 
 var PLAYERS = {
-  "o86nl3xz": {
-    "name": "Curab17"
-  },
-  "7j4ykpmj": {
-    "name": "Iacobus_Tardus_4096"
-  },
-  "18q3o3dj": {
-    "name": "BellumZeldaDS"
-  },
-  "48gqvy1j": {
-    "name": "Danicker"
-  },
-  "v8lmpvvj": {
-    "name": "krowel99"
-  },
-  "8gr6l51x": {
-    "name": "Invinceicube"
-  },
-  "8qr1my7j": {
-    "name": "lolgodcx"
-  },
-  "xk4w9n6j": {
-    "name": "vowels"
-  },
-  "jnzwqy1j": {
-    "name": "VideoCake"
-  },
-  "68wvng4x": {
-    "name": "Fraims"
-  },
-  "18v11z28": {
-    "name": "Ganondorf"
-  },
-  "8vknkyyj": {
-    "name": "raflikk"
-  },
-  "jonzgqe8": {
-    "name": "Moinit"
-  },
-  "8lol3dr8": {
-    "name": "Treasurettv456"
-  },
-  "kjpyvyyj": {
-    "name": "JDBlack21"
-  },
-  "1xydgznx": {
-    "name": "Seletron"
-  },
-  "j966q27j": {
-    "name": "cypcypcyp"
-  },
-  "j5vdv9z8": {
-    "name": "BeHatTieu1105"
-  },
-  "864kw0qj": {
-    "name": "VictorGD"
-  },
-  "8rlk4968": {
-    "name": "06gaming"
-  },
-  "1xyy9oyx": {
-    "name": "hsblue"
-  },
-  "48g92r2x": {
-    "name": "afnannen136"
-  },
-  "qj2yk7n8": {
-    "name": "Johny_Mandarino"
-  },
-  "68w3lqqj": {
-    "name": "ThatRaisinTho"
-  },
-  "qjnvlo28": {
-    "name": "Hachimen"
-  },
-  "qjn1wzw8": {
-    "name": "Otterstone_Gamer"
-  },
-  "48gnzmyj": {
-    "name": "sash2"
-  },
-  "7j4mn3wj": {
-    "name": "beker"
-  },
-  "qjonv2n8": {
-    "name": "micyoutube1"
-  },
-  "18vmo728": {
-    "name": "Tei"
-  },
-  "qj2oqknx": {
-    "name": "Benjams"
-  },
-  "x7q6qnv8": {
-    "name": "DimRom"
-  },
-  "18qleq7j": {
-    "name": "WudzZalesia"
-  },
-  "jmo35zo8": {
-    "name": "mikolajwo_"
-  },
-  "1xy2lzn8": {
-    "name": "Xdxboxjaja"
-  },
-  "kjpy612j": {
-    "name": "MKWilliam"
-  },
-  "8qzo95o8": {
-    "name": "TRLittleToaster"
-  },
-  "jm3gdl48": {
-    "name": "nadirdz"
-  },
-  "x76ql5rj": {
-    "name": "GGG502"
-  },
-  "8rpp6d3j": {
-    "name": "TheEgglet"
-  },
-  "8v2mqk2j": {
-    "name": "DaDino"
-  },
-  "8lpwmwlj": {
-    "name": "BandicootMan"
-  },
-  "j429k2vx": {
-    "name": "Jannatul89"
-  },
-  "810eq3lx": {
-    "name": "ganvis"
-  },
-  "8r72pyqj": {
-    "name": "Teoinator"
-  },
-  "j4qllvdx": {
-    "name": "Wertylo"
-  },
-  "j034we9j": {
-    "name": "Addsup"
-  },
-  "y8don5x6": {
-    "name": "IGINLAJ"
-  },
-  "j2y1vn68": {
-    "name": "Issiz_Plays"
-  },
-  "1xyl59vj": {
-    "name": "Pzula"
-  },
-  "xyrnknwj": {
-    "name": "Jsweety"
-  },
-  "8r7960gj": {
-    "name": "MHB1"
-  },
-  "j265zylx": {
-    "name": "Jeff_bezos"
-  },
-  "j926l7v8": {
-    "name": "BIGGER"
-  },
-  "j5q96pzj": {
-    "name": "cybercor3"
-  },
-  "jo3yw93j": {
-    "name": "SBorealis"
-  },
-  "8g0y222x": {
-    "name": "MaxIsDead"
-  },
-  "j26g4pnx": {
-    "name": "zalex"
-  },
-  "8g03771x": {
-    "name": "TapToChange"
-  },
-  "y8d03mx6": {
-    "name": "WonderJ13"
-  },
-  "v18q90jn": {
-    "name": "Jumpyluff"
-  },
-  "7j4qz0lx": {
-    "name": "CalebCreeper"
-  },
-  "y8dg4yg8": {
-    "name": "kompowiec2"
-  },
-  "5j5q70wj": {
-    "name": "ChiefDimSum"
-  },
-  "48g5e77j": {
-    "name": "David_Speedrunner"
-  },
-  "5j5v52z8": {
-    "name": "Pusha"
-  },
-  "o86p320j": {
-    "name": "Xenolith"
-  },
-  "48gz3mpj": {
-    "name": "the_daniel_"
-  },
-  "pj0oomrj": {
-    "name": "gdisrael909"
-  },
-  "zxzovv08": {
-    "name": "Micko"
-  },
-  "68w66dqj": {
-    "name": "iplaymario124"
-  },
-  "qxk2vk2x": {
-    "name": "8w"
-  },
-  "zx75g1v8": {
-    "name": "MegaBenefactor"
-  },
-  "kjp9r6y8": {
-    "name": "RudieCantFail"
-  },
-  "5j5e9n6j": {
-    "name": "Nitrocoba"
-  },
-  "7j40rkw8": {
-    "name": "Spyrosh"
-  },
-  "3qjo6lj6": {
-    "name": "MrRobter12"
-  },
-  "dx369k2x": {
-    "name": "RoseWater"
-  },
-  "v8lyz27j": {
-    "name": "KenneththeGreat"
-  },
-  "qjnlynwx": {
-    "name": "Khorndog"
-  },
-  "qjnqro2j": {
-    "name": "Cytruss"
-  },
-  "98rqyndx": {
-    "name": "theguy9912"
-  },
-  "v8le3e2x": {
-    "name": "Jocemar1"
-  },
-  "48g3qorx": {
-    "name": "Steev0"
-  },
-  "kj9m70vx": {
-    "name": "Dntv19"
-  },
-  "qjnrlrdx": {
-    "name": "Dntv29"
-  },
-  "5j55yqgj": {
-    "name": "motya_b1"
-  },
-  "1xy7mnzx": {
-    "name": "Matt5486"
-  },
-  "kj9k7yv8": {
-    "name": "darG"
-  },
-  "1xywz4m8": {
-    "name": "AdamYeetz"
-  },
-  "qjomz7lx": {
-    "name": "Tai0"
-  },
-  "98rwnm3x": {
-    "name": "lfabergamin123"
-  },
-  "dx3rn46x": {
-    "name": "KikooDX"
-  },
-  "o86q265x": {
-    "name": "potbor1"
-  },
-  "j5w7ddwj": {
-    "name": "o_gamer"
-  },
-  "jn3zmgdx": {
-    "name": "Endlessworms"
-  },
-  "xko3p498": {
-    "name": "shmoovid"
-  },
-  "jmo6z748": {
-    "name": "Hongroot02"
-  },
-  "qxkgld6j": {
-    "name": "frobuddyharry"
-  },
-  "8e9zlwdj": {
-    "name": "TODY"
-  },
-  "8l023l48": {
-    "name": "kaharamamm"
-  },
-  "zx7qv9v8": {
-    "name": "Lincher"
-  },
-  "x35pnm6j": {
-    "name": "Clippey"
-  },
-  "jmon27y8": {
-    "name": "S-wing88"
-  },
-  "x35o177j": {
-    "name": "lcgameryt"
-  },
-  "jo3yo3nj": {
-    "name": "GoodsMamas"
-  },
-  "8wlyl94j": {
-    "name": "ReinhardtC"
-  },
-  "8wly31zj": {
-    "name": "YoboyJakrispy13"
-  },
-  "98ryr6qj": {
-    "name": "JKRZ"
-  },
-  "kjp1vr2j": {
-    "name": "Wolt1x"
-  },
-  "8grmqryx": {
-    "name": "Hoamanh0"
-  },
-  "xz7y7e4j": {
-    "name": "Zakeel"
-  },
-  "8vkg6e5j": {
-    "name": "Claramay"
-  },
-  "8enzzr78": {
-    "name": "RealJaymze"
-  },
-  "j42r565x": {
-    "name": "iqlic"
-  },
-  "jopopmnx": {
-    "name": "Xandawesome"
-  },
-  "kjpqm15x": {
-    "name": "PangoBara"
-  },
-  "8146rml8": {
-    "name": "Noli"
-  },
-  "jmp4d0yj": {
-    "name": "jslizzle"
-  },
-  "8e911p2j": {
-    "name": "CC39"
-  },
-  "x720yvv8": {
-    "name": "maciejklosek"
-  },
-  "x3qkr1qj": {
-    "name": "yosse"
-  },
-  "0jm1l4ej": {
-    "name": "MatteoXZ"
-  },
-  "qjn3zpqx": {
-    "name": "Mooismyusername"
-  },
-  "8grdylpx": {
-    "name": "thechillest5"
-  },
-  "o86r2r38": {
-    "name": "PullMatrox"
-  },
-  "8d39k2gx": {
-    "name": "Stevie"
-  },
-  "jmpwk9oj": {
-    "name": "DisasterPro"
-  },
-  "j4rrklm8": {
-    "name": "PinkyNoice"
-  },
-  "x72v7mr8": {
-    "name": "Shiroma"
-  },
-  "e8e935oj": {
-    "name": "cros107"
-  },
-  "x3m4rd78": {
-    "name": "Pialuothegoodinobby"
-  },
-  "8enqg4d8": {
-    "name": "xXMegaLordXx"
-  },
-  "8d44mnm8": {
-    "name": "NewGdryv"
-  },
-  "j4r3l1v8": {
-    "name": "JDBlack721"
-  },
-  "8e9pwlpj": {
-    "name": "Thinklater"
-  },
-  "86vl9r0j": {
-    "name": "Jaesung_Lee"
-  },
-  "863kn0p8": {
-    "name": "Lord_of_the_Wings"
-  },
-  "x7m717rx": {
-    "name": "MarioMasterSpeedruns"
-  },
-  "xylr04vj": {
-    "name": "TylerJ9"
-  },
-  "xyl0zrwj": {
-    "name": "BetaTR"
-  },
-  "jp4kde4j": {
-    "name": "JolehSaurus7"
-  },
-  "8lp1y77j": {
-    "name": "YouLostMan"
-  },
-  "jmp9wlzj": {
-    "name": "SNovaKK"
-  },
-  "1xyylnyx": {
-    "name": "Zambrini"
-  },
-  "xkmkq77j": {
-    "name": "PentaTM"
-  },
-  "j5v4zyw8": {
-    "name": "dylanberry"
-  },
-  "8g5eng2j": {
-    "name": "Majin_Buu22"
-  },
-  "x33q7dex": {
-    "name": "Mammouthsouffle"
-  },
-  "j2yw2en8": {
-    "name": "Fil0Nerd"
-  },
-  "8l3k1wl8": {
-    "name": "srhm0911"
-  },
-  "8l320zl8": {
-    "name": "the_rnaval6000YT"
-  },
-  "8ekno5d8": {
-    "name": "Tvrobot"
-  },
-  "8qz92d08": {
-    "name": "wiibass"
-  },
-  "j92vryo8": {
-    "name": "FreezerGlobe"
-  },
-  "xy5p67z8": {
-    "name": "ThOArSTenBROT"
-  },
-  "joovw00j": {
-    "name": "Mar2"
-  },
-  "j4qrqlvx": {
-    "name": "pocogamer"
-  },
-  "8qrydqwj": {
-    "name": "klimtkiller"
-  },
-  "8q6pe4dj": {
-    "name": "Knapriss"
-  },
-  "814e4yp8": {
-    "name": "Ninge3007"
-  },
-  "qxk6lo28": {
-    "name": "ThatBox"
-  },
-  "j2wkv07j": {
-    "name": "17thPrime"
-  },
-  "xyrn00nj": {
-    "name": "Buba148"
-  },
-  "68wpyoqx": {
-    "name": "ShadowPhoenixDX"
-  },
-  "8vk2lnyj": {
-    "name": "hcEz"
-  },
-  "jp42yv5j": {
-    "name": "CallSaul"
-  },
-  "jpm73e0j": {
-    "name": "Poncini_"
-  },
-  "xz0ng908": {
-    "name": "vVEdslayerVv"
-  },
-  "8e9zddpj": {
-    "name": "slamix"
-  },
-  "864k5ywj": {
-    "name": "Ellisthespeedrunner"
-  },
-  "j9pln07x": {
-    "name": "noxiom"
-  },
-  "xko2g798": {
-    "name": "Akuretaki"
-  },
-  "jn2p712j": {
-    "name": "DavidConcal"
-  },
-  "jprn6zy8": {
-    "name": "Loven"
-  },
-  "xk4lzokj": {
-    "name": "whitespider331"
-  },
-  "8rl524d8": {
-    "name": "RedYoshii"
-  },
-  "x3wewr2j": {
-    "name": "FDMBABY"
-  },
-  "8qr3nw7j": {
-    "name": "Deapred"
-  },
-  "18qpz2qx": {
-    "name": "Drift"
-  },
-  "68wrqw4j": {
-    "name": "Nascozz"
-  },
-  "xkorz698": {
-    "name": "Spiritologists"
-  },
-  "xkmy5d7j": {
-    "name": "Windooows"
-  },
-  "xyo2g7vj": {
-    "name": "jboi598"
-  },
-  "8qor2ewj": {
-    "name": "LowkeyyDumb"
-  },
-  "xymne4mx": {
-    "name": "kiken"
-  },
-  "jnp7wmq8": {
-    "name": "NOT_UwUzi"
-  },
-  "j95rvyv8": {
-    "name": "SomeMelGuy"
-  },
-  "jonr39n8": {
-    "name": "JustaRandomdude"
-  },
-  "8v2ml02j": {
-    "name": "IneQua"
-  },
-  "qjo1ovnx": {
-    "name": "FireGoesFast"
-  },
-  "j5qomv6j": {
-    "name": "WevynSpeed"
-  },
-  "xyo29omj": {
-    "name": "MrLowSpec"
-  },
-  "jmzq3dox": {
-    "name": "TheMe26"
-  },
-  "j9pdkgwx": {
-    "name": "Emerald_TheNicest"
-  },
-  "810yeerx": {
-    "name": "benny_10"
-  },
-  "8g01ml7x": {
-    "name": "PnKiseZ"
-  },
-  "j9pok9wx": {
-    "name": "doogiLenoob"
-  },
-  "j0nrw398": {
-    "name": "pilonpl"
-  },
-  "j065q13j": {
-    "name": "edencopii"
-  },
-  "8g04n02x": {
-    "name": "Diahh"
-  },
-  "jmpmp4oj": {
-    "name": "Gaming_64"
-  },
-  "xk1ek77j": {
-    "name": "marcel7"
-  },
-  "jmp1gz4j": {
-    "name": "SnorlaxDash"
-  }
-}
+    "8107qqlx": {
+        "name": "russellwestBRICK",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "48gqvy1j": {
+        "name": "Danicker",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "xk4w9n6j": {
+        "name": "vowels",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF8239","dark": "#EF8241"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "8vknkyyj": {
+        "name": "raflikk",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#E762B5","dark": "#F772C5"}
+        }
+    },
+    "y8don5x6": {
+        "name": "IGINLAJ",
+        "nameStyle": {"style": "solid","color": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "y8d03mx6": {
+        "name": "WonderJ13",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#900090","dark": "#A010A0"},"color-to": {"light": "#900090","dark": "#A010A0"}
+        }
+    },
+    "v18q90jn": {
+        "name": "Jumpyluff",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#808080","dark": "#B8B8B8"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "7j4qz0lx": {
+        "name": "CalebCreeper",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "y8dg4yg8": {
+        "name": "kompowiec2",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "5j5q70wj": {
+        "name": "ChiefDimSum",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "48g5e77j": {
+        "name": "David_Speedrunner",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#900090","dark": "#A010A0"}
+        }
+    },
+    "1xyl59vj": {
+        "name": "Pzula",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "5j5v52z8": {
+        "name": "Pusha",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "kjpyvyyj": {
+        "name": "JDBlack21",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "o86p320j": {
+        "name": "Xenolith",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "qjonv2n8": {
+        "name": "micyoutube1",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "1xyy9oyx": {
+        "name": "hsblue",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "48gz3mpj": {
+        "name": "the_daniel_",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#A259C5","dark": "#C279E5"},"color-to": {"light": "#A259C5","dark": "#C279E5"}
+        }
+    },
+    "pj0oomrj": {
+        "name": "gdisrael909",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "zxzovv08": {
+        "name": "Micko",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#A259C5","dark": "#C279E5"},"color-to": {"light": "#E762B5","dark": "#F772C5"}
+        }
+    },
+    "qj2yk7n8": {
+        "name": "Johny_Mandarino",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "68w66dqj": {
+        "name": "iplaymario124",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "qxk2vk2x": {
+        "name": "8w",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF8239","dark": "#EF8241"},"color-to": {"light": "#EF8239","dark": "#EF8241"}
+        }
+    },
+    "zx75g1v8": {
+        "name": "MegaBenefactor",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#900090","dark": "#A010A0"},"color-to": {"light": "#900090","dark": "#A010A0"}
+        }
+    },
+    "68w3lqqj": {
+        "name": "ThatRaisinTho",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#A259C5","dark": "#C279E5"},"color-to": {"light": "#900090","dark": "#A010A0"}
+        }
+    },
+    "kjp9r6y8": {
+        "name": "RudieCantFail",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF8239","dark": "#EF8241"},"color-to": {"light": "#900090","dark": "#A010A0"}
+        }
+    },
+    "qjnvlo28": {
+        "name": "Hachimen",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "7j40rkw8": {
+        "name": "Spyrosh",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "3qjo6lj6": {
+        "name": "MrRobter12",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "dx369k2x": {
+        "name": "RoseWater",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "v8lyz27j": {
+        "name": "KenneththeGreat",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF2081","dark": "#FF3091"},"color-to": {"light": "#EF2081","dark": "#FF3091"}
+        }
+    },
+    "qjnlynwx": {
+        "name": "Jack5",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "qjnqro2j": {
+        "name": "Cytruss",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF8239","dark": "#EF8241"},"color-to": {"light": "#808080","dark": "#B8B8B8"}
+        }
+    },
+    "98rqyndx": {
+        "name": "theguy9912",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "v8le3e2x": {
+        "name": "Jocemar1",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "48g3qorx": {
+        "name": "Steev0",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF2081","dark": "#FF3091"},"color-to": {"light": "#EF2081","dark": "#FF3091"}
+        }
+    },
+    "kj9m70vx": {
+        "name": "Dntv19",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "qjnrlrdx": {
+        "name": "Dntv29",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "5j55yqgj": {
+        "name": "motya_b1",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "48g92r2x": {
+        "name": "afnannen136",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#E762B5","dark": "#F772C5"},"color-to": {"light": "#900090","dark": "#A010A0"}
+        }
+    },
+    "1xy7mnzx": {
+        "name": "Matt5486",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "kj9k7yv8": {
+        "name": "darG",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#000000","dark": "#FFFFFF"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "1xywz4m8": {
+        "name": "AdamYeetz",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#900090","dark": "#A010A0"},"color-to": {"light": "#900090","dark": "#A010A0"}
+        }
+    },
+    "qjomz7lx": {
+        "name": "Tai0",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#808080","dark": "#B8B8B8"},"color-to": {"light": "#808080","dark": "#B8B8B8"}
+        }
+    },
+    "98rwnm3x": {
+        "name": "lfabergamin123",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#808080","dark": "#B8B8B8"},"color-to": {"light": "#808080","dark": "#B8B8B8"}
+        }
+    },
+    "68wvng4x": {
+        "name": "Fraims",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "18v11z28": {
+        "name": "Ganondorf",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF8239","dark": "#EF8241"},"color-to": {"light": "#EF8239","dark": "#EF8241"}
+        }
+    },
+    "dx3rn46x": {
+        "name": "KikooDX",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "o86q265x": {
+        "name": "potbor1",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "j5w7ddwj": {
+        "name": "o_gamer",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#900090","dark": "#A010A0"},"color-to": {"light": "#900090","dark": "#A010A0"}
+        }
+    },
+    "qj2oqknx": {
+        "name": "Benjams",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "xko3p498": {
+        "name": "shmoovid",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EF8239","dark": "#EF8241"}
+        }
+    },
+    "jmo6z748": {
+        "name": "Hongroot02",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF2081","dark": "#FF3091"},"color-to": {"light": "#EF2081","dark": "#FF3091"}
+        }
+    },
+    "j2y1vn68": {
+        "name": "Issiz_Plays",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "qxkgld6j": {
+        "name": "frobuddyharry",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "8e9zlwdj": {
+        "name": "TODY",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "8l023l48": {
+        "name": "kaharamamm",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF2081","dark": "#FF3091"},"color-to": {"light": "#EF2081","dark": "#FF3091"}
+        }
+    },
+    "zx7qv9v8": {
+        "name": "Lincher",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#A259C5","dark": "#C279E5"},"color-to": {"light": "#A259C5","dark": "#C279E5"}
+        }
+    },
+    "x35pnm6j": {
+        "name": "Clippey",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#FFB3F3","dark": "#FFB3F3"},"color-to": {"light": "#EF2081","dark": "#FF3091"}
+        }
+    },
+    "x7q6qnv8": {
+        "name": "DimRom",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF8239","dark": "#EF8241"},"color-to": {"light": "#808080","dark": "#B8B8B8"}
+        }
+    },
+    "jmon27y8": {
+        "name": "S-wing88",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "x35o177j": {
+        "name": "lcgameryt",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "jo3yo3nj": {
+        "name": "GoodsMamas",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "8wlyl94j": {
+        "name": "ReinhardtC",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#A259C5","dark": "#C279E5"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "8wly31zj": {
+        "name": "YoboyJakrispy13",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "xyrnknwj": {
+        "name": "Jsweety",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "18qleq7j": {
+        "name": "WudzZalesia",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "jmo35zo8": {
+        "name": "mikolajwo_",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF2081","dark": "#FF3091"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "98ryr6qj": {
+        "name": "JKRZ",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#808080","dark": "#B8B8B8"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "kjp1vr2j": {
+        "name": "Wolt1x",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "8grmqryx": {
+        "name": "Hoamanh0",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "xz7y7e4j": {
+        "name": "Zakeel",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "8vkg6e5j": {
+        "name": "Claramay",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "8enzzr78": {
+        "name": "RealJaymze",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "j42r565x": {
+        "name": "iqlic",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF8239","dark": "#EF8241"},"color-to": {"light": "#808080","dark": "#B8B8B8"}
+        }
+    },
+    "jopopmnx": {
+        "name": "Xandawesome",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#E77471","dark": "#E77471"}
+        }
+    },
+    "j966q27j": {
+        "name": "cypcypcyp",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "7j4ykpmj": {
+        "name": "Iacobus_Tardus_4096",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "kjpqm15x": {
+        "name": "PangoBara",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#900090","dark": "#A010A0"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "8146rml8": {
+        "name": "Noli",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#A259C5","dark": "#C279E5"},"color-to": {"light": "#A259C5","dark": "#C279E5"}
+        }
+    },
+    "jmp4d0yj": {
+        "name": "jslizzle",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "8e911p2j": {
+        "name": "CC39",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "x720yvv8": {
+        "name": "maciejklosek",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "x3qkr1qj": {
+        "name": "yosse",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#000000","dark": "#FFFFFF"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "0jm1l4ej": {
+        "name": "MatteoXZ",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "qjn3zpqx": {
+        "name": "Mooismyusername",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "8grdylpx": {
+        "name": "thechillest5",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#900090","dark": "#A010A0"},"color-to": {"light": "#900090","dark": "#A010A0"}
+        }
+    },
+    "o86r2r38": {
+        "name": "PullMatrox",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#900090","dark": "#A010A0"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "8d39k2gx": {
+        "name": "Stevie",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "jmpwk9oj": {
+        "name": "DisasterPro",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "j4rrklm8": {
+        "name": "PinkyNoice",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "x72v7mr8": {
+        "name": "Shiroma",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "e8e935oj": {
+        "name": "cros107",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF2081","dark": "#FF3091"},"color-to": {"light": "#EF2081","dark": "#FF3091"}
+        }
+    },
+    "x3m4rd78": {
+        "name": "Pialuothegoodinobby",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EF8239","dark": "#EF8241"}
+        }
+    },
+    "8qzo95o8": {
+        "name": "TRLittleToaster",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "8enqg4d8": {
+        "name": "xXMegaLordXx",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "8d44mnm8": {
+        "name": "NewGdryv",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#900090","dark": "#A010A0"}
+        }
+    },
+    "j4r3l1v8": {
+        "name": "JDBlack721",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "8e9pwlpj": {
+        "name": "Thinklater",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "86vl9r0j": {
+        "name": "Jaesung_Lee",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#E762B5","dark": "#F772C5"}
+        }
+    },
+    "863kn0p8": {
+        "name": "Lord_of_the_Wings",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "x7m717rx": {
+        "name": "MarioMasterSpeedruns",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "xylr04vj": {
+        "name": "TylerJ9",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#000000","dark": "#FFFFFF"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "xyl0zrwj": {
+        "name": "BetaTR",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "jp4kde4j": {
+        "name": "JolehSaurus7",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "8lp1y77j": {
+        "name": "YouLostMan",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "jmp9wlzj": {
+        "name": "SNovaKK",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#900090","dark": "#A010A0"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "1xyylnyx": {
+        "name": "Zambrini",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "xkmkq77j": {
+        "name": "PentaTM",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#EF8239","dark": "#EF8241"}
+        }
+    },
+    "j5v4zyw8": {
+        "name": "dylanberry",
+        "nameStyle": {"style": "solid","color": {"light": "#A259C5","dark": "#C279E5"}
+        }
+    },
+    "8g5eng2j": {
+        "name": "Majin_Buu22",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#E77471","dark": "#E77471"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "1xy2lzn8": {
+        "name": "Xdxboxjaja",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#EF8239","dark": "#EF8241"}
+        }
+    },
+    "x33q7dex": {
+        "name": "Mammouthsouffle",
+        "nameStyle": {"style": "solid","color": {"light": "#EF2081","dark": "#FF3091"}
+        }
+    },
+    "j2yw2en8": {
+        "name": "Fil0Nerd",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "jnzwqy1j": {
+        "name": "VideoCake",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "8l3k1wl8": {
+        "name": "srhm0911",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#E762B5","dark": "#F772C5"}
+        }
+    },
+    "8l320zl8": {
+        "name": "the_rnaval6000YT",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "8ekno5d8": {
+        "name": "Tvrobot",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#808080","dark": "#B8B8B8"},"color-to": {"light": "#808080","dark": "#B8B8B8"}
+        }
+    },
+    "8qz92d08": {
+        "name": "wiibass",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "j92vryo8": {
+        "name": "FreezerGlobe",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#E77471","dark": "#E77471"}
+        }
+    },
+    "jm3gdl48": {
+        "name": "nadirdz",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "xy5p67z8": {
+        "name": "ThOArSTenBROT",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "x76ql5rj": {
+        "name": "GGG502",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "joovw00j": {
+        "name": "Mar2",
+        "nameStyle": {"style": "solid","color": {"light": "#EF8239","dark": "#EF8241"}
+        }
+    },
+    "8qrydqwj": {
+        "name": "klimtkiller",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "8q6pe4dj": {
+        "name": "Knapriss",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "814e4yp8": {
+        "name": "Ninge3007",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#900090","dark": "#A010A0"}
+        }
+    },
+    "qxk6lo28": {
+        "name": "ThatBox",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF8239","dark": "#EF8241"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "j2wkv07j": {
+        "name": "17thPrime",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF8239","dark": "#EF8241"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "xyrn00nj": {
+        "name": "Buba148",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF8239","dark": "#EF8241"},"color-to": {"light": "#EF8239","dark": "#EF8241"}
+        }
+    },
+    "68wpyoqx": {
+        "name": "ShadowPhoenixDX",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "8vk2lnyj": {
+        "name": "hcEz",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF8239","dark": "#EF8241"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "jp42yv5j": {
+        "name": "CallSaul",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "jpm73e0j": {
+        "name": "Poncini_",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#EF2081","dark": "#FF3091"}
+        }
+    },
+    "xz0ng908": {
+        "name": "vVEdslayerVv",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "8e9zddpj": {
+        "name": "slamix",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#FFB3F3","dark": "#FFB3F3"},"color-to": {"light": "#FFB3F3","dark": "#FFB3F3"}
+        }
+    },
+    "864k5ywj": {
+        "name": "Ellisthespeedrunner",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "j9pln07x": {
+        "name": "noxiom",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "xko2g798": {
+        "name": "Akuretaki",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "jn2p712j": {
+        "name": "DavidConcal",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#A259C5","dark": "#C279E5"}
+        }
+    },
+    "jprn6zy8": {
+        "name": "Loven",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EF2081","dark": "#FF3091"},"color-to": {"light": "#900090","dark": "#A010A0"}
+        }
+    },
+    "xk4lzokj": {
+        "name": "whitespider331",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#000000","dark": "#FFFFFF"},"color-to": {"light": "#808080","dark": "#B8B8B8"}
+        }
+    },
+    "810eq3lx": {
+        "name": "ganvis",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#808080","dark": "#B8B8B8"},"color-to": {"light": "#808080","dark": "#B8B8B8"}
+        }
+    },
+    "8rl524d8": {
+        "name": "RedYoshii",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "x3wewr2j": {
+        "name": "mashuu",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "8lpwmwlj": {
+        "name": "BandicootMan",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "8qr3nw7j": {
+        "name": "Deapred",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#900090","dark": "#A010A0"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "j5q96pzj": {
+        "name": "cybercor3",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "68wrqw4j": {
+        "name": "Nascozz",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "xkorz698": {
+        "name": "spiritology",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#FFB3F3","dark": "#FFB3F3"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "xkmy5d7j": {
+        "name": "Windooows",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#A259C5","dark": "#C279E5"},"color-to": {"light": "#E762B5","dark": "#F772C5"}
+        }
+    },
+    "8rpp6d3j": {
+        "name": "TheEgglet",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "j429k2vx": {
+        "name": "Jannatul89",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#900090","dark": "#A010A0"},"color-to": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "xyo2g7vj": {
+        "name": "jboi598",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "8qor2ewj": {
+        "name": "LowkeyyDumb",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#808080","dark": "#B8B8B8"}
+        }
+    },
+    "xymne4mx": {
+        "name": "Kiken",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#000000","dark": "#FFFFFF"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "jnp7wmq8": {
+        "name": "NOT_UwUzi",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "j95rvyv8": {
+        "name": "SomeMelGuy",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "jonr39n8": {
+        "name": "JustaRandomdude",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "8v2ml02j": {
+        "name": "IneQua",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#FFB3F3","dark": "#FFB3F3"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "qjo1ovnx": {
+        "name": "FireGoesFast",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "j5qomv6j": {
+        "name": "WevynSpeed",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "xyo29omj": {
+        "name": "MrLowSpec",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "8r72pyqj": {
+        "name": "Teoinator",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "j034we9j": {
+        "name": "Addsup",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#000000","dark": "#FFFFFF"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "jmzq3dox": {
+        "name": "TheMe26",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#E762B5","dark": "#F772C5"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "j9pdkgwx": {
+        "name": "Emerald_TheNicest",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "810yeerx": {
+        "name": "benny_10",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "8g01ml7x": {
+        "name": "PnKiseZ",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#E762B5","dark": "#F772C5"},"color-to": {"light": "#A259C5","dark": "#C279E5"}
+        }
+    },
+    "j26g4pnx": {
+        "name": "zalex",
+        "nameStyle": {"style": "solid","color": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "j9pok9wx": {
+        "name": "doogiLenoob",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "j0nrw398": {
+        "name": "pilonpl",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "j065q13j": {
+        "name": "edencopii",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "8g04n02x": {
+        "name": "Diahh",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "jmpmp4oj": {
+        "name": "Gaming_64",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#A259C5","dark": "#C279E5"}
+        }
+    },
+    "xk1ek77j": {
+        "name": "marcel7",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "jmp1gz4j": {
+        "name": "SnorlaxDash",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "8g07z62x": {
+        "name": "ShaunyBud",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "8rly7g38": {
+        "name": "HCOOLYT",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "816znd5x": {
+        "name": "chezginger",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "8d0zg3gx": {
+        "name": "RubiksLegend09",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "j4qrqlvx": {
+        "name": "pocogamer",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "8d0v7wox": {
+        "name": "Snake5",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "8grr3z7x": {
+        "name": "IeF",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "j204o4nx": {
+        "name": "LightningGaming",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "jm32y7o8": {
+        "name": "jelmerspoor",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "x76vp06j": {
+        "name": "pineaple",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "jng33qq8": {
+        "name": "yeri11",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "x76d05yj": {
+        "name": "Plebeualeatorio",
+        "nameStyle": {"style": "solid","color": {"light": "#808080","dark": "#B8B8B8"}
+        }
+    },
+    "j46rknl8": {
+        "name": "youngbirchman",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "j5q9qggj": {
+        "name": "dilean6",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#EF2081","dark": "#FF3091"}
+        }
+    },
+    "qjo95lej": {
+        "name": "LunaSpeed",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#FFB3F3","dark": "#FFB3F3"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "jpy4pryj": {
+        "name": "_Kyouki",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#900090","dark": "#A010A0"},"color-to": {"light": "#EF2081","dark": "#FF3091"}
+        }
+    },
+    "jpmwvd4j": {
+        "name": "NotSurp",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "j233de7x": {
+        "name": "SteelyYolo",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "jmzd7zex": {
+        "name": "Mineryhb6",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "x72m5rq8": {
+        "name": "po1ntless",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#900090","dark": "#A010A0"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "j20ze36x": {
+        "name": "EvanEpic1234",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "xkppp39j": {
+        "name": "w1f1",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "j466p0w8": {
+        "name": "beethebee2",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "8d4qqyl8": {
+        "name": "upelly",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "j9kk4wo8": {
+        "name": "yetyetty1234567890",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "x777pnvx": {
+        "name": "Maxjb",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "zxzgmk9j": {
+        "name": "Chevtrox",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#808080","dark": "#B8B8B8"},"color-to": {"light": "#808080","dark": "#B8B8B8"}
+        }
+    },
+    "jng6qkd8": {
+        "name": "artemkuznecov",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "864kw0qj": {
+        "name": "VictorGD",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "x76rd50j": {
+        "name": "Addictedgamer347",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "j59rq9qx": {
+        "name": "AlexanderV",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "j9rwm4nj": {
+        "name": "Lutz127",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#000000","dark": "#FFFFFF"},"color-to": {"light": "#E77471","dark": "#E77471"}
+        }
+    },
+    "8r7960gj": {
+        "name": "MHB1",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    },
+    "j265zylx": {
+        "name": "MrpooptheIII",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "j926l7v8": {
+        "name": "BIGGER",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#EF8239","dark": "#EF8241"}
+        }
+    },
+    "jo3yw93j": {
+        "name": "SBorealis",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "8g0y222x": {
+        "name": "MaxIsDead",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#808080","dark": "#B8B8B8"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "8g03771x": {
+        "name": "TapToChange",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "8642wrqj": {
+        "name": "Braydon2013",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "j5221dnj": {
+        "name": "Pirilon6644",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "o86nl3xz": {
+        "name": "Curab17",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "18q3o3dj": {
+        "name": "BellumZeldaDS",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#DAA520","dark": "#F0C03E"},"color-to": {"light": "#DAA520","dark": "#F0C03E"}
+        }
+    },
+    "v8lmpvvj": {
+        "name": "krowel99",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "8gr6l51x": {
+        "name": "Invinceicube",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#A259C5","dark": "#C279E5"},"color-to": {"light": "#A259C5","dark": "#C279E5"}
+        }
+    },
+    "8qr1my7j": {
+        "name": "lolgodcx",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#900090","dark": "#A010A0"},"color-to": {"light": "#900090","dark": "#A010A0"}
+        }
+    },
+    "jonzgqe8": {
+        "name": "Moinit",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "8lol3dr8": {
+        "name": "Treasurettv456",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "86rg59p8": {
+        "name": "giohappy",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "1xydgznx": {
+        "name": "Seletron",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "j5vdv9z8": {
+        "name": "BeHatTieu1105",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#4646CE","dark": "#6666EE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "8rlk4968": {
+        "name": "06gaming",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "qjn1wzw8": {
+        "name": "Otterstone_Gamer",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#009856","dark": "#09B876"},"color-to": {"light": "#009856","dark": "#09B876"}
+        }
+    },
+    "48gnzmyj": {
+        "name": "sash2",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#808080","dark": "#B8B8B8"},"color-to": {"light": "#808080","dark": "#B8B8B8"}
+        }
+    },
+    "7j4mn3wj": {
+        "name": "beker",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#7AB941","dark": "#8AC951"}
+        }
+    },
+    "18vmo728": {
+        "name": "Tei",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#EE2222","dark": "#EE4444"},"color-to": {"light": "#000000","dark": "#FFFFFF"}
+        }
+    },
+    "kjpy612j": {
+        "name": "MKWilliam",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#249BCE","dark": "#44BBEE"},"color-to": {"light": "#249BCE","dark": "#44BBEE"}
+        }
+    },
+    "8v2mqk2j": {
+        "name": "DaDino",
+        "nameStyle": {"style": "solid","color": {"light": "#EE2222","dark": "#EE4444"}
+        }
+    },
+    "j4qllvdx": {
+        "name": "Wertylo",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#900090","dark": "#A010A0"},"color-to": {"light": "#E762B5","dark": "#F772C5"}
+        }
+    },
+    "8w0ezozj": {
+        "name": "Frixnipe",
+        "nameStyle": {"style": "gradient","color-from": {"light": "#7AB941","dark": "#8AC951"},"color-to": {"light": "#4646CE","dark": "#6666EE"}
+        }
+    }
+};
+
+console.log("SCRIPT LOADED: leaderboards-exec.js");
 
 //////////////
-// FETCHING //
+// PREAMBLE //
 //////////////
+
+// CONSTANTS
+const SRC_API = "https://www.speedrun.com/api/v1/";
+const SRC_COM = "https://www.speedrun.com/";
+const SRC_MAX = 200;
+const SERIES = "whg";
+
+/////////////////
+// API LIBRARY //
+/////////////////
 
 // Generates a URL with the given components
 function createURL(site, path=[], queries={}) {
     return site + path.join('/') + '?' + Object.entries(queries).map(([key, value]) => key + '=' + value).join('&');
 }
 
-const delay = t => new Promise(resolve => setTimeout(resolve, t));
+// Delay function
+async function delay(t) {
+    return new Promise(resolve => setTimeout(resolve, t));
+}
 
 // Fetch Promise
 async function getFetchPromise(url) {
@@ -1171,11 +1747,19 @@ async function getMultipagePromise(url, pages, updateCallback) {
     })
 }
 
+// Converts a multipage result to a single data array
+function pagesToData(pages) {
+    data = [];
+    for (const page in pages) {
+        data = data.concat(page.data);
+    }
+    return data;
+}
+
 // Default Error Handler
 function DEFAULT_ERROR(err) {
     console.error(err);
 }
-
 
 /////////////////
 // ID FETCHING //
@@ -1247,14 +1831,6 @@ function getIdsFromSeriesDump(series_json) {
     return ids;
 }
 
-// Converts a multipage result to a single data array
-function pagesToData(pages) {
-    data = [];
-    for (const page in pages) {
-        data = data.concat(page.data);
-    }
-    return data
-}
 
 async function fetchSeriesIds(series) {
     return getFetchPromise(createURL(SRC_API, ["series", series, "games"], {embed: "levels,categories,variables"})).then(series_json => {
@@ -1262,20 +1838,27 @@ async function fetchSeriesIds(series) {
     })
 }
 
-async function useCurrentSeriesIds() {
-    return IDS;
+async function useCurrentSeriesIds(ids) {
+    return ids;
+}
+
+// Loading
+var totalLoadAmount = 2200;
+var currentLoadAmount = 0;
+function updateLoadingBar(amount) {
+    currentLoadAmount += amount;
+    var loadedPercentage = Math.min(100, 100 * currentLoadAmount / totalLoadAmount);
+    document.getElementById("loading-bar").style.width = loadedPercentage + '%';
+}
+function updateGenerateLoadingBar(amount) {
+    currentLoadAmount += amount;
 }
 
 // Id Fetching -- DO NOT DELETE THIS
 document.getElementById("main-page").style.display = "none";
 var allRuns = [];
-// var multipagePromises = Object.values(IDS.games).map(id => getMultipagePromise(
-//     createURL(SRC_API, ["runs"], {game: id, max: SRC_MAX}),
-//     [],
-//     updateLoadingBar
-// ));
 // fetchSeriesIds(SERIES).then(ids => {
-useCurrentSeriesIds().then(ids => {
+useCurrentSeriesIds(IDS).then(ids => {
 
     console.log("IDS Fetched", ids);
     IDS = ids;
@@ -1290,7 +1873,7 @@ useCurrentSeriesIds().then(ids => {
     ));
 
     console.time("request all runs");
-    return Promise.all(multipagePromises)
+    return Promise.all(multipagePromises);
     
 }).then(result => {
 
@@ -1314,28 +1897,23 @@ useCurrentSeriesIds().then(ids => {
 }).then(results => {
 
     // Record player names
+    console.log("Results: ", results);
     for (const playerData of results) {
         PLAYERS[playerData.data.id] = {
-            name: playerData.data.names.international
+            name: playerData.data.names.international,
+            nameStyle: playerData.data["name-style"]
         }
     }
+    console.log("PLAYERS", PLAYERS);
+    // console.log(formatJSON(JSON.stringify(PLAYERS),"    ",2));
 
     // Switch pages
     initSelectors();
     document.getElementById("loading-page").style.display = "none";
     document.getElementById("main-page").style.display = "block";
+    go();
 
 }).catch(DEFAULT_ERROR);
-
-// Loading
-var totalLoadAmount = 2000;
-var currentLoadAmount = 0;
-function updateLoadingBar(amount) {
-    currentLoadAmount += amount;
-    var loadedPercentage = Math.min(100, 100 * currentLoadAmount / totalLoadAmount);
-    document.getElementById("loading-bar").style.width = loadedPercentage + '%';
-}
-
 
 ///////////////
 // SELECTORS //
@@ -1396,8 +1974,9 @@ function attemptSetCheckboxFromParams(node, name, params) {
 }
 
 function copyTextToClipboard(text) {
-    if (navigator.clipboard && false) {
+    if (navigator.clipboard) {
         navigator.clipboard.writeText(text);
+        alert("Copied to clipboard!");
     } else {
         prompt("Here is your link:", text);
     }
@@ -1433,7 +2012,7 @@ var checkboxes = {
         "Any%": newCheckbox("Any%"),
         "100%": newCheckbox("100%"),
         "Tutorial (whg2)": newCheckbox("Tutorial (whg2)"),
-        "HTML5": newCheckbox("HTML5"),
+        "HTML5": newCheckbox("HTML5 (whg1)"),
         "Any% Glitched": newCheckbox("Any% Glitched"),
         "100% Glitched": newCheckbox("100% Glitched"),
         "Tutorial Glitched (whg2)": newCheckbox("Tutorial Glitched (whg2)")
@@ -1838,7 +2417,6 @@ function initSelectors() {
     document.getElementById("refresh-button").onclick = function() {
         window.parent.location.assign(getLink());
     }
-    go();
 
 }
 
@@ -1901,7 +2479,7 @@ function variableApplies(variable, game, level, category) {
     }
 }
 
-var transitionFrames = {
+var TRANSITION_FRAMES = {
     whg1: {
         "": {
             "Any%": 0
@@ -1953,31 +2531,31 @@ for (var level in IDS.levels.whg1) {
     } else {
         frames = 44;
     }
-    transitionFrames.whg1[level] = {
+    TRANSITION_FRAMES.whg1[level] = {
         "Start to Finish": frames
     };
 }
 for (var level in IDS.levels.whg2) {
     if (level.includes("Tutorial")) {
-        transitionFrames.whg2[level] = {
+        TRANSITION_FRAMES.whg2[level] = {
             "Glitchless": 0,
             "Any%": 0
         };
     } else {
-        transitionFrames.whg2[level] = {
+        TRANSITION_FRAMES.whg2[level] = {
             "Glitchless": 30,
             "Any%": 30
         };
     }
 }
 for (var level in IDS.levels.whg3) {
-    transitionFrames.whg3[level] = {
+    TRANSITION_FRAMES.whg3[level] = {
         "Any%": 0,
         "100%": 0
     }
 }
 for (var level in IDS.levels.whg4) {
-    transitionFrames.whg4[level] = {
+    TRANSITION_FRAMES.whg4[level] = {
         "Any% Glitchless": 0,
         "100% Glitchless": 0,
         "Any%": 0
@@ -1992,7 +2570,7 @@ for (var level in IDS.levels.whgext) {
     } else {
         frames = 44;
     }
-    transitionFrames.whgext[level] = {
+    TRANSITION_FRAMES.whgext[level] = {
         "WHG1 Backwards": frames
     };
 }
@@ -2002,7 +2580,7 @@ function getTransitionFrames(run) {
     level = getKeyFromValue(IDS.levels[game], run.level) ?? "";
     scope = level==""? "per-game" : "per-level";
     category = getKeyFromValue(IDS.categories[game][scope], run.category);
-    return transitionFrames[game][level][category];
+    return TRANSITION_FRAMES[game][level][category];
 }
 
 /////////////
@@ -2124,8 +2702,38 @@ function medalCountCompare(medalCount1, medalCount2) {
     return '=';
 }
 
+function arrayMax(array) {
+    return Math.max(...array);
+}
+
+function count(element, array) {
+    return array.filter(e => e == element).length;
+}
+
+function placesCompare(item1, item2) {
+    var places1 = item1.metadata.places;
+    var places2 = item2.metadata.places;
+    var maxPlace = arrayMax(places1.concat(places2));
+    for (var place = 1; place <= maxPlace; place++) {
+        if (count(place, places1) > count(place, places2)) {
+            return '>';
+        } else if (count(place, places1) < count(place, places2)) {
+            return '<';
+        }
+    }
+    return '=';
+}
+
+var placesComparison = getComparison(placesCompare);
 var medalCountComparison = getComparison(medalCountCompare);
 var dateComparison = getComparison(getCompare(run => run.date))
+
+/////////////////
+// IDENTIFIERS //
+/////////////////
+playerIdentifier = function(run) {
+    return run.players[0].uri;
+}
 
 /////////////
 // COLUMNS //
@@ -2176,6 +2784,11 @@ COLUMNS.daysAgo = {
     header: "Date",
     function: entry => writeDaysAgo(entry.item.date)
 }
+// NOTE: This doesn't work yet, it's hardcoded for 311.066 (whg1 wr)
+COLUMNS.percentCompare = {
+    header: "Percent Behind",
+    function: entry => Math.round(((entry.item.times.primary_t - 311.066) / 311.066) * 1000) / 10 + "%"
+}
 COLUMNS.null = {
     header: null,
     function: entry => null
@@ -2194,6 +2807,11 @@ COLUMNS.srcUserLink = {
 COLUMNS.srcRunLink = {
     header: null,
     function: entry => entry.item.weblink
+}
+
+COLUMNS.playerClass = {
+    header: null,
+    function: entry => "column-player"
 }
 
 // COLUMN SETS
@@ -2226,6 +2844,13 @@ var COLUMN_SET = {
             COLUMNS.null,
             COLUMNS.null,
             COLUMNS.null
+        ],
+        classes: [
+            COLUMNS.null,
+            COLUMNS.playerClass,
+            COLUMNS.null,
+            COLUMNS.null,
+            COLUMNS.null
         ]
     },
     "Sum of Best": {
@@ -2254,6 +2879,304 @@ var COLUMN_SET = {
     }
 };
 
+/////////////////
+// NEW COLUMNS //
+/////////////////
+
+function getPlayerListFromRuns(runs) {
+    var playerList = [];
+    for (const run of runs) {
+        for (const player of run.players) {
+            if (playerList.filter(p => p.uri == player.uri).length == 0) {
+                playerList.push(player);
+            }
+        }
+    }
+    return playerList;
+}
+
+function getNumberedPlayerListFromRuns(runs) {
+    var allPlayers = runs.map(run => run.players).flat(1);
+    var playerCounts = {};
+    var playerObjects = {};
+    for (const player of allPlayers) {
+        if (!(player.uri in playerCounts)) {
+            playerCounts[player.uri] = 0;
+            playerObjects[player.uri] = player;
+        }
+        playerCounts[player.uri]++;
+    }
+    var playerList = [];
+    for (uri of Object.keys(playerCounts)) {
+        var inserted = false;
+        for (var i = 0; i < playerList.length; i++) {
+            if (!inserted && playerList[i].count < playerCounts[uri]) {
+                playerList.splice(i, 0, {
+                    player: playerObjects[uri],
+                    count: playerCounts[uri]
+                });
+                inserted = true;
+                break;
+            }
+        }
+        if (!inserted) {
+            playerList.push({
+                player: playerObjects[uri],
+                count: playerCounts[uri]
+            })
+        }
+    }
+    return playerList;
+}
+
+function getLevelNameFromId(id) {
+    for (const levelSet of Object.values(IDS.levels)) {
+        var key = getKeyFromValue(levelSet, id);
+        if (key != undefined) {
+            return key;
+        }
+    }
+    return undefined;
+}
+
+function getGameNameFromId(id) {
+    return getKeyFromValue(IDS.games, id);
+}
+
+var NEW_COLUMNS = {};
+NEW_COLUMNS.place = {
+    header: "Place",
+    text: entry => entry.place
+}
+NEW_COLUMNS.player = {
+    header: "Player",
+    text: function(entry) {
+        var playerList = getPlayerListFromRuns(entry.item.runs);
+        if (playerList.length == 0) {
+            return "None";
+        } else if (playerList.length == 1) {
+            return getDisplayName(playerList[0]);
+        } else {
+            return "Multiple";
+        }
+    },
+    color1: function(entry) {
+        var playerList = getPlayerListFromRuns(entry.item.runs);
+        if (playerList.length == 0) {
+            return null;
+        } else if (playerList.length == 1) {
+            var player = playerList[0];
+            if (player.rel == "guest") {
+                return null;
+            } else {
+                return getPlayerNameColor(player, "color-from");
+            }
+        } else {
+            return "#000000";
+        }
+    },
+    color2: function(entry) {
+        var playerList = getPlayerListFromRuns(entry.item.runs);
+        if (playerList.length == 0) {
+            return null;
+        } else if (playerList.length == 1) {
+            var player = playerList[0];
+            if (player.rel == "guest") {
+                return null;
+            } else {
+                return getPlayerNameColor(player, "color-to");
+            }
+        } else {
+            return "#000000";
+        }
+    },
+    link: function(entry) {
+        var playerList = getPlayerListFromRuns(entry.item.runs);
+        if (playerList.length == 1) {
+            var player = playerList[0];
+            if (player.rel == "guest" || !(player.id in PLAYERS)) {
+                return null;
+            } else {
+                return createURL(SRC_COM, ["user", getDisplayName(player)]);
+            }
+        } else {
+            return null;
+        }
+    },
+    bold: function(entry) {
+        var playerList = getPlayerListFromRuns(entry.item.runs);
+        if (playerList.length == 1) {
+            var player = playerList[0];
+            return player.rel == "user";
+        }
+        return true;
+    },
+    tooltip: function(entry) {
+        var playerList = getNumberedPlayerListFromRuns(entry.item.runs);
+        if (playerList.length <= 1) return "";
+        return playerList.map(playerPair => getDisplayName(playerPair.player) + " (" + playerPair.count + ")").join("\n");
+    }
+}
+NEW_COLUMNS.time = {
+    header: "Time",
+    text: entry => formatTimeFromISO(entry.item.runs[0].times.primary),
+    link: entry => entry.item.runs[0].weblink
+}
+NEW_COLUMNS.firsts = {
+    header: "1st",
+    text: entry => count(1, entry.item.metadata.places)
+}
+NEW_COLUMNS.placeCount = function(place) {
+    return {
+        header: place,
+        text: entry => count(place, entry.item.metadata.places),
+        tooltip: function(entry) {
+            var places = entry.item.metadata.places;
+            var runs = entry.item.runs;
+            var lines = [];
+            for (var i = 0; i < places.length; i++) {
+                if (places[i] == place) {
+                    var gameName = getGameNameFromId(runs[i].game);
+                    var levelName = getLevelNameFromId(runs[i].level);
+                    var description = gameName;
+                    if (levelName) {
+                        description += ": " + levelName;
+                    }
+                    lines.push(description);
+                }
+            }
+            return lines.join("\n");
+        }
+    }
+}
+NEW_COLUMNS.sob = { // Merge with time?
+    header: "Sum of Best",
+    text: entry => formatTimeFromSecondsToDecimal(entry.item.sob)
+}
+NEW_COLUMNS.achieved = {
+    header: "Achieved",
+    text: entry => writeDaysAgo(entry.item.runs[0].date),
+    tooltip: entry => formatDate(entry.item.runs[0].date)
+}
+NEW_COLUMNS.date = {
+    header: "Date",
+    text: entry => formatDate(entry.item.runs[0].date),
+    tooltip: entry => writeDaysAgo(entry.item.runs[0].date)
+}
+
+//////////////
+// GRAPHICS //
+//////////////
+
+function drawCircle(context, x, y, r, F="none", S="none") {
+    context.beginPath();
+    context.arc(x, y, r, 0, 2 * Math.PI);
+    if (F != "none") {
+        context.fillStyle = F;
+        context.fill();
+    }
+    if (S != "none") {
+        context.strokeStyle = S;
+        context.stroke();
+    }
+}
+
+function getPlayerNameColor(player, type, mode="dark") {
+    return getNameStyleColor(getPlayerNameStyle(player), type, mode);
+}
+
+const GENERIC_NAMESTYLE = {
+    style: "solid",
+    color: {
+        light: "#000000",
+        dark: "#FFFFFF"
+    }
+}
+function getPlayerNameStyle(player) {
+    if (player.rel == "user") {
+        if (player.id in PLAYERS) {
+            return PLAYERS[player.id].nameStyle;
+        }
+    }
+    return GENERIC_NAMESTYLE;
+}
+
+function getNameStyleColor(nameStyle, type, mode="dark") {
+    if (nameStyle.style == "solid") {
+        return nameStyle.color[mode];
+    } else if (nameStyle.style == "gradient") {
+        return nameStyle[type][mode];
+    } else {
+        if (mode == "dark") {
+            return "#ffffff";
+        } else {
+            return "#000000";
+        }
+    }
+}
+
+function getHorizontalGradient(c, color1, color2, x1, x2) { 
+    const gradient = c.createLinearGradient(x1, 0, x2, 0);
+    gradient.addColorStop(0, color1);
+    gradient.addColorStop(1, color2);
+    return gradient;
+}
+
+function generateGraphics() {
+    console.log("Generating Graphics...");
+    var canvas = document.getElementById("graphics-canvas");
+    console.log("Canvas:", canvas, canvas.width);
+    canvas.width = 640;
+    canvas.height = 1000;
+    var c = canvas.getContext("2d");
+    console.log("Context:", c, c.width);
+    c.fillStyle = "#1e1e1e";
+    c.fillRect(0, 0, canvas.width, canvas.height);
+
+    var leaderboard = generateLeaderboard();
+    console.log("Leaderboard:", leaderboard);
+
+    var X = 150;
+    var dotSize = 3;
+    var horizontalNameOffset = 10;
+    var fontSize = 13;
+    var fontFamily = "Calibri";
+    c.font = fontSize + "px " + fontFamily;
+    c.textBaseline = "middle";
+    var Y1 = 50;
+    var Y2 = canvas.height - 50;
+    var playerCount = Math.min(28,leaderboard.length - 3);
+    var T1 = leaderboard[playerCount - 1].item.times.primary_t;
+    var T2 = leaderboard[0].item.times.primary_t;
+
+    // Horizontal Grid Lines
+    var DT = 10;
+    c.fillStyle = "white";
+    c.strokeStyle = "white";
+    c.lineWidth = 0.5;
+    console.log("Bounds:");
+    for (var i = Math.floor(T1 / DT); i >= Math.ceil(T2 / DT); i--) {
+        var y = Math.round(lerp(i * DT, T1, T2, Y1, Y2)) + 0.5;
+        c.fillText(formatTimeFromSecondsToDecimal(i * DT, false), 50, y);
+        c.beginPath();
+        c.moveTo(90, y);
+        c.lineTo(500, y);
+        c.stroke();
+    }
+
+    // Dots and Names
+    for (var i = playerCount - 1; i >= 0; i--) {
+        var y = lerp(leaderboard[i].item.times.primary_t, T1, T2, Y1, Y2);
+        var player = leaderboard[i].item.players[0];
+        var colorFrom = getPlayerNameColor(player, "color-from");
+        var colorTo = getPlayerNameColor(player, "color-to");
+        drawCircle(c, X, y, dotSize, colorFrom);
+        c.fillStyle = getHorizontalGradient(c, colorFrom, colorTo, X + horizontalNameOffset, X + horizontalNameOffset + fontSize * 0.4 * getDisplayName(player).length);
+        c.fillText(getDisplayName(player), X + horizontalNameOffset, y);
+    }
+
+}
+
 ////////////////////////////
 // LEADERBOARD PROCESSING //
 ////////////////////////////
@@ -2262,6 +3185,140 @@ var COLUMN_SET = {
 // Generates a leaderboard according to the user's selections and displays it on the page
 function go() {
 
+    if (leaderboardTypeSelector.value == "Normal Progression") {
+        document.getElementById("graphics-div").style.display = "block";
+        document.getElementById("leaderboard-div").style.display = "none";
+        generateGraphics();
+    } else {
+        document.getElementById("graphics-div").style.display = "none";
+        document.getElementById("leaderboard-div").style.display = "block";
+        generateTable();
+    }
+
+}
+
+function generateTable() {
+    var table = getTable();
+    document.getElementById("table-container").textContent = '';
+    document.getElementById("table-container").appendChild(table);
+}
+
+function getTable() {
+    
+    // Get Leaderboard
+    var leaderboard = generateLeaderboard();
+    console.log("Generating table with leaderboard: ", leaderboard);
+
+    // Handle Error Cases
+    if (leaderboard == null) {
+        return document.createTextNode("Invalid leaderboard type.");
+    }
+    if (leaderboard.length == 0) {
+        return document.createTextNode("This leaderboard is empty.");
+    }
+    console.log("Leaderboard for Table: ", leaderboard);
+
+    // Convert Leaderboard to Table Values NEW
+    if (leaderboardTypeSelector.value == "Medal Counts") {
+        return createTableNEW(
+            leaderboard, 
+            [
+                NEW_COLUMNS.place, 
+                NEW_COLUMNS.player,
+                NEW_COLUMNS.placeCount(1), 
+                NEW_COLUMNS.placeCount(2), 
+                NEW_COLUMNS.placeCount(3)
+            ]
+        );
+    } else if (leaderboardTypeSelector.value == "Normal Leaderboard") {
+        return createTableNEW(
+            leaderboard,
+            [
+                NEW_COLUMNS.place, 
+                NEW_COLUMNS.player,
+                NEW_COLUMNS.time,
+                NEW_COLUMNS.date
+            ]
+        )
+    } else if (leaderboardTypeSelector.value == "Sum of Best") {
+        return createTableNEW(
+            leaderboard,
+            [
+                NEW_COLUMNS.place,
+                NEW_COLUMNS.player,
+                NEW_COLUMNS.sob
+            ]
+        )
+    } else if (leaderboardTypeSelector.value == "Recent Runs") {
+        return createTableNEW(
+            leaderboard,
+            [
+                NEW_COLUMNS.place,
+                NEW_COLUMNS.player,
+                NEW_COLUMNS.time,
+                NEW_COLUMNS.date
+            ]
+        )
+    } else {
+        return document.createTextNode("Unsupported Leaderboard Type.");
+    }
+}
+
+function generateLeaderboard() {
+
+    // Get Category Filters
+    var categoryFilters = generateCategoryFilters();
+
+    // Generates a leaderboard for each of the categories included
+    var runSets = categoryFilters.map(filter => allRuns.filter(filter));
+    var mutExFunc = getComparison(getCompare(run => getDisplayName(run.players[0])))('=');
+    if (leaderboardTypeSelector.value == "Recent Runs") {
+        mutExFunc = getComparison(getCompare(run => run.id))('=');
+    }
+    var leaderboards = runSets.map(runSet => rankItems(
+        runSet,
+        getComparison(getCompare(run => run.times.primary_t))('<'),
+        mutExFunc
+    ))
+
+    // No leaderboards
+    if (leaderboards.length == 0) {
+        return [];
+    }
+
+    // Process Leaderboards according to type
+    return combineLeaderboards(leaderboards, leaderboardTypeSelector.value);
+}
+
+function combineLeaderboards(leaderboards, method) {
+    switch (method)
+    {
+        case "Normal Leaderboard":
+            var entries = leaderboards[0].map(entry => {return {item: {runs: [entry.item], metadata: {}}, place: entry.place}});
+            return entries;
+        case "Sum of Best":
+            return getSOBLeaderboardNEW(leaderboards, playerIdentifier);
+        case "Medal Counts":
+            var medalCountEntries = getMedalCountEntries(leaderboards, playerIdentifier);
+            var medalCountLeaderboard = rankItems(medalCountEntries, placesComparison('>'), (entry1, entry2) => false);
+            return medalCountLeaderboard;
+        case "Recent Runs":
+            var runSet = leaderboards.flat(1).map(entry => entry.item);
+            var leaderboard = getRecentLeaderboard(runSet);
+            console.log("Run set leaderboard:",leaderboard);
+            return leaderboard.map(entry => {return {item: {runs: [entry.item], metadata: {}}, place: entry.place}});
+        case "Normal Progression":
+            return rankItems(
+                leaderboards.flat(1).map(entry => entry.item), 
+                getComparison(getCompare(run => run.times.primary_t))('<'), 
+                (entry1, entry2) => false
+            );
+        default:
+            return null;
+    }
+}
+
+function generateCategoryFilters() {
     // Category filters is an array of filters where each filter represents a category
     // In the case of a single category, this array will have length 1
     var categoryFilters
@@ -2270,67 +3327,7 @@ function go() {
     } else {
         categoryFilters = generateMultipleCategoryFilters();
     }
-
-    // Generates a leaderboard for each of the categories included
-    var runSets = categoryFilters.map(filter => getFilteredItems(allRuns, filter));
-    var leaderboards = runSets.map(runSet => getLeaderboard(
-        runSet,
-        getComparison(getCompare(run => run.times.primary_t))('<'),
-        getComparison(getCompare(run => getDisplayName(run.players[0])))('=')
-    ))
-
-    // No leaderboards
-    if (leaderboards.length == 0) {
-        document.getElementById("table-container").textContent = "This leaderboard is empty.";
-        return;
-    }
-
-    // Process Leaderboards according to type
-    var leaderboard;
-    switch (leaderboardTypeSelector.value)
-    {
-        case "Normal Leaderboard":
-            leaderboard = getLeaderboard(
-                leaderboards.flat(1).map(entry => entry.item), 
-                getComparison(getCompare(run => run.times.primary_t))('<'), 
-                (entry1, entry2) => false
-            );
-            break;
-        case "Sum of Best":
-            leaderboard = getSOBLeaderboard(leaderboards);
-            break;
-        case "Medal Counts":
-            leaderboard = getMedalLeaderboard(leaderboards, getComparison(getCompare(run => run.times.primary_t))('<'), medalCountComparison('>'));
-            break;
-        case "Recent Runs":
-            leaderboard = getRecentLeaderboard(runSets.flat(1));
-            break;
-        default:
-            document.getElementById("table-container").textContent = "Invalid leaderboard type.";
-            return;
-    }
-
-    // Empty leaderboard
-    if (leaderboard.length == 0) {
-        document.getElementById("table-container").textContent = "This leaderboard is empty.";
-        return;
-    }
-
-    // Convert Leaderboard to Table Values
-    var tableTexts = getTableValues(
-        leaderboard,
-        COLUMN_SET[leaderboardTypeSelector.value].texts
-    );
-    var tableLinks = getTableValues(
-        leaderboard,
-        COLUMN_SET[leaderboardTypeSelector.value].links
-    )
-
-    // Create Table and Insert in HTML
-    var table = createTable(tableTexts, tableLinks);
-    document.getElementById("table-container").textContent = '';
-    document.getElementById("table-container").appendChild(table);
-
+    return categoryFilters;
 }
 
 function generateSingleCategoryFilters() {
@@ -2456,16 +3453,7 @@ function generateMultipleCategoryFilters() {
 
 }
 
-function getFilteredItems(items, filter) {
-    var runs = [];
-    for (const item of items) {
-        if (!filter(item)) continue;
-        runs.push(item);
-    }
-    return runs;
-}
-
-function getLeaderboard(items, comparison, mutuallyExclusive) {
+function rankItems(items, comparison, mutuallyExclusive) {
 
     // Filter and sort items
     var leaderboard = [];
@@ -2504,6 +3492,7 @@ function getLeaderboard(items, comparison, mutuallyExclusive) {
 // Requires a comparison and direction to determine correct placing on given leaderboards in case of ties
 // In the medals object, the keys correspond to player ids and the values correspond to medal count objects
 function getMedalCounts(leaderboards, comparison) {
+    console.log("Calculating Medal Counts for leaderboards:", leaderboards);
     var medals = {};
     for (var leaderboard of leaderboards) {
         var place = 1;
@@ -2555,6 +3544,31 @@ function getMedalLeaderboard(leaderboards, entryComparison, medalComparison) {
     return leaderboard;
 }
 
+// Returns an unsorted array of entries for a medal count leaderboard
+function getMedalCountEntries(leaderboards, identifier) {
+    var identities = {};
+    for (const leaderboard of leaderboards) {
+        for (const i in leaderboard) {
+            var identity = identifier(leaderboard[i].item);
+
+            // Add identity to identities
+            if (!(identity in identities)) {
+                identities[identity] = {
+                    metadata: {
+                        places: []
+                    },
+                    runs: []
+                };
+            }
+
+            // Append current run and place to runs/places
+            identities[identity].metadata.places.push(leaderboard[i].place);
+            identities[identity].runs.push(leaderboard[i].item);
+        }
+    }
+    return Object.values(identities);
+}
+
 // Generates a Sum of Best leaderboard based on a list of leaderboards
 function getSOBLeaderboard(leaderboards) {
     var playerTimes = {};
@@ -2582,7 +3596,7 @@ function getSOBLeaderboard(leaderboards) {
             });
         }
     }
-    var leaderboard = getLeaderboard(playerSOBs, (entry1, entry2) => entry1.sob < entry2.sob, (entry1, entry2) => false);
+    var leaderboard = rankItems(playerSOBs, (entry1, entry2) => entry1.sob < entry2.sob, (entry1, entry2) => false);
     if (definedLength(communityTimes) == leaderboards.length) {
         leaderboard.unshift({
             place: 0, 
@@ -2595,10 +3609,127 @@ function getSOBLeaderboard(leaderboards) {
     return leaderboard;
 }
 
+function calculateSOB(runs, extraFrames) {
+    return timeFromFramesToSeconds(extraFrames + runs.reduce((acc, curr) => acc + timeFromSecondsToFrames(curr.times.primary_t), 0));
+}
+
+function getSOBLeaderboardNEW(leaderboards, identifier) {
+
+    // Sort runs by identity
+    var identityRuns = {};
+    var communityRuns = [];
+    for (var i in leaderboards) {
+        if (leaderboards[i].length == 0) {
+            break;
+        }
+        communityRuns.push(leaderboards[i][0].item);
+        for (var entry of leaderboards[i]) {
+            var identity = identifier(entry.item);
+            if (!(identity in identityRuns)) {
+                identityRuns[identity] = [];
+            }
+            identityRuns[identity].push(entry.item);
+        }
+    }
+    var totalTransitionFrames = sum(communityRuns.map(run => getTransitionFrames(run)));
+
+    identityCompleteRunSets = Object.values(identityRuns).filter(runs => runs.length == leaderboards.length);
+
+    // Calculate identity sobs and create leaderboard
+    identityEntries = identityCompleteRunSets.map(runs => {
+        return {
+            runs: runs,
+            sob: calculateSOB(runs, totalTransitionFrames)
+        }
+    });
+    var leaderboard = rankItems(identityEntries, (entry1, entry2) => entry1.sob < entry2.sob, (entry1, entry2) => false);
+
+    // Add community to leaderboard and return
+    if (communityRuns.length == leaderboards.length) {
+        console.log("Community Runs:", communityRuns);
+        console.log(communityRuns.length, leaderboards.length);
+        leaderboard.unshift({
+            place: 0,
+            item: {
+                runs: communityRuns,
+                sob: calculateSOB(communityRuns, totalTransitionFrames)
+            }
+        });
+    }
+    return leaderboard;
+}
+
 // Sorts runs by most recent
 function getRecentLeaderboard(runs) {
-    var leaderboard = getLeaderboard(runs, dateComparison('>'), (entry1, entry2) => false);
-    return leaderboard;
+    return rankItems(runs, dateComparison('>'), (entry1, entry2) => false);
+}
+
+function createTableNEW(leaderboard, columns) {
+    const table = document.createElement("table");
+    var currentRow = document.createElement("tr");
+    var currentCell;
+
+    // Headers
+    for (const column of columns) {
+        currentCell = document.createElement("th");
+        currentCell.textContent = column.header;
+        currentRow.appendChild(currentCell);
+    }
+    table.appendChild(currentRow);
+
+    // Entries
+    for (const entry of leaderboard) {
+        currentRow = document.createElement("tr");
+        for (const column of columns) {
+            currentCell = document.createElement("td");
+            var cellContent;
+
+            // Link
+            if ("link" in column && column.link(entry) != null) {
+                cellContent = document.createElement("a");
+                cellContent.href = column.link(entry);
+                cellContent.target = "_blank";
+            } else {
+                cellContent = document.createElement("span");
+            }
+
+            // Color
+            if ("color1" in column && column.color1(entry) != null && "color2" in column && column.color2(entry) != null) {
+                color1 = column.color1(entry);
+                color2 = column.color2(entry);
+                cellContent.style.background = "linear-gradient(0.25turn," + color1 + "," + color2 + ")";
+                cellContent.style.color = "transparent";
+                cellContent.style["-webkit-background-clip"] = "text";
+                cellContent.style["-background-clip"] = "text";
+            } else if ("color" in column) {
+                cellContent.style.color = column.color(entry);
+            }
+
+            // Font
+            if ("bold" in column) {
+                if (column.bold(entry)) {
+                    cellContent.style["font-weight"] = "bold";
+                }
+            }
+
+            cellContent.textContent = column.text(entry);
+
+            // Tooltip
+            if ("tooltip" in column && column.tooltip(entry) != "") {
+                var tooltipElement = document.createElement("span");
+                tooltipElement.classList.add("tooltiptext");
+                tooltipElement.textContent = column.tooltip(entry);
+                cellContent.classList.add("tooltip");
+                cellContent.appendChild(tooltipElement);
+            }
+
+            currentCell.appendChild(cellContent);
+            currentRow.appendChild(currentCell);
+        }
+        table.appendChild(currentRow);
+    }
+
+    return table;
 }
 
 // Convert Table Array to HTML Object
@@ -2611,15 +3742,17 @@ function createTable(texts, links=null, classes=null) {
         var currentRow = document.createElement("tr");
         for (var j in texts[i]) {
             var currentCell = document.createElement("td");
+            var cellContent;
             if (links[i][j] == null) {
-                currentCell.textContent = texts[i][j];
+                cellContent = document.createElement("span");
+                cellContent.textContent = texts[i][j];
             } else {
-                var anchor = document.createElement("a");
-                anchor.href = links[i][j];
-                anchor.target = "_blank";
-                anchor.textContent = texts[i][j];
-                currentCell.appendChild(anchor);
+                cellContent = document.createElement("a");
+                cellContent.href = links[i][j];
+                cellContent.target = "_blank";
+                cellContent.textContent = texts[i][j];
             }
+            currentCell.appendChild(cellContent);
             // add classes
             currentRow.appendChild(currentCell);
         }
@@ -2638,6 +3771,18 @@ function getTableValues(leaderboard, columns) {
         tableValues.push(columns.map(col => col.function(leaderboard[i])));
     }
     return tableValues;
+}
+
+///////////////
+// TOOL TIPS //
+///////////////
+document.addEventListener('mousemove', onMouseMove, false);
+function onMouseMove(event) {
+    var tooltips = document.querySelectorAll('.tooltiptext');
+    for (var i = 0; i < tooltips.length; i++) {
+        tooltips[i].style.left = event.pageX + 'px';
+        tooltips[i].style.top = event.pageY + 'px';
+    }
 }
 
 //////////////////////
@@ -2662,14 +3807,16 @@ function objectsEqual(obj1, obj2) {
 
 // JSON Format
 // Formats a JSON string with line breaks and spaces for use in code
-function formatJSON(json, indent="    ") {
+function formatJSON(json, indent="    ", depth=Infinity) {
     var s = '';
     var indentLevel = 0;
     for (const c of json) {
         if (c == '}') {
             indentLevel--;
-            s += '\n'
-            s += indent.repeat(indentLevel);
+            if (indentLevel <= depth) {
+                s += '\n'
+                s += indent.repeat(indentLevel);
+            }
         }
         s += c;
         if (c == ':') {
@@ -2679,8 +3826,10 @@ function formatJSON(json, indent="    ") {
             if (c == '{') {
                 indentLevel++;
             }
-            s += '\n';
-            s += indent.repeat(indentLevel);
+            if (indentLevel <= depth) {
+                s += '\n';
+                s += indent.repeat(indentLevel);
+            }
         }
     }
     return s
@@ -2716,8 +3865,36 @@ function fillLeadingZeroes(x, digitCount) {
     }
     return s;
 }
+// Converts "PT7M3.066S" to "7:03.066"
+// NOTE: the src category has an option "Always Display Milliseconds" which is not considered here
+function formatTimeFromISO(iso) {
+    return formatTimeComponents(getTimeComponentsFromISO(iso));
+}
+function formatTimeComponents(timeComponents) {
+    var s = "";
+    var started = false;
+    for (var component of timeComponents) {
+        if (started) {
+            s += ':';
+            s += fillLeadingZeroes(component, 2);
+        } else if (component != 0) {
+            started = true;
+            s += component;
+        }
+    }
+    return s;
+}
+// Get time components ["37", "4", "1.033"] from ISO format "PT37H4M1.033S"
+function getTimeComponentsFromISO(iso) {
+    var commaSeparated = iso.replace("PT","").replace("H", ",").replace("M", ",").replace("S","");
+    var timeComponents = commaSeparated.split(",");
+    while (timeComponents.length < 3) {
+        timeComponents.unshift(0);
+    }
+    return timeComponents;
+}
 // Converts an integer number of total seconds into a string of the form m:ss.xxx
-function formatTimeFromSecondsToDecimal(totalSeconds) {
+function formatTimeFromSecondsToDecimal(totalSeconds, alwaysIncludeMillis=false) {
 
     var millis = Math.round(totalSeconds * 1000) % 1000;
     var seconds = Math.floor(totalSeconds) % 60;
@@ -2747,7 +3924,7 @@ function formatTimeFromSecondsToDecimal(totalSeconds) {
         s += fillLeadingZeroes(seconds, 2);
     }
     
-    if (millis != 0 || true) {
+    if (millis != 0 || alwaysIncludeMillis) {
         s += '.' + fillLeadingZeroes(millis, 3);
     }
 
@@ -2808,4 +3985,16 @@ function writeDaysAgo(date) {
         var daysText = days % 365 + " day" + daysPlural;
         return yearsText + daysText + suffix;
     }
+}
+function lerp(t, t1, t2, x1, x2) {
+    return x1 + (t - t1) * (x2 - x1) / (t2 - t1);
+}
+// Formats "2023-12-04"to "4 Dec 2023"
+function formatDate(date) {
+    var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var yearMonthDate = date.split('-');
+    var year = yearMonthDate[0];
+    var month = yearMonthDate[1];
+    var day = yearMonthDate[2];
+    return day + " " + monthNames[Number(month) - 1] + " " + year;
 }
