@@ -179,12 +179,10 @@ var IDS = {
         },
         "whg2": {
             "per-game": {
-                "Glitchless": "824zpgk5",
-                "Any%": "w20g0yok"
+                "Glitchless": "824zpgk5"
             },
             "per-level": {
-                "Glitchless": "n2yv8vm2",
-                "Any%": "7kjgmg4k"
+                "Glitchless": "n2yv8vm2"
             }
         },
         "whg3": {
@@ -1681,7 +1679,7 @@ var PLAYERS = {
     }
 };
 
-console.log("SCRIPT LOADED: leaderboards-exec.js");
+// console.log("SCRIPT LOADED: leaderboards-exec.js");
 
 //////////////
 // PREAMBLE //
@@ -2015,7 +2013,7 @@ var checkboxes = {
         "HTML5": newCheckbox("HTML5 (whg1)"),
         "Any% Glitched": newCheckbox("Any% Glitched"),
         "100% Glitched": newCheckbox("100% Glitched"),
-        "Tutorial Glitched (whg2)": newCheckbox("Tutorial Glitched (whg2)")
+        // "Tutorial Glitched (whg2)": newCheckbox("Tutorial Glitched (whg2)") REMOVED
         // "Duofecta 1&2": newCheckbox("Duofecta 1&2"),
         // "Duofecta 3&4": newCheckbox("Duofecta 3&4"),
         // "Trifecta": newCheckbox("Trifecta"),
@@ -2333,7 +2331,7 @@ function initSelectors() {
         };
         if (level.includes("Tutorial")) {
             categoryNames.whg2[level]["Glitchless"].push("Tutorial (whg2)");
-            categoryNames.whg2[level]["Any%"].push("Tutorial Glitched (whg2)");
+            // categoryNames.whg2[level]["Any%"].push("Tutorial Glitched (whg2)"); REMOVED
         } else {
             categoryNames.whg2[level]["Glitchless"].push("100%");
             categoryNames.whg2[level]["Any%"].push("100% Glitched");
@@ -2372,7 +2370,7 @@ function initSelectors() {
     for (const [name, node] of Object.entries(checkboxes.categories)) {
         if (["Any%", "100%", "Tutorial (whg2)", "HTML5"].includes(name)) {
             addNodeToDocument(node, "checkboxes-categories-main");
-        } else if (["Any% Glitched", "100% Glitched", "Tutorial Glitched (whg2)"].includes(name)) {
+        } else if (["Any% Glitched", "100% Glitched"].includes(name)) { // REMOVED: "Tutorial Glitched (whg2)"
             addNodeToDocument(node, "checkboxes-categories-glitched");
         } else if (["Duofecta 1&2", "Duofecta 3&4", "Trifecta", "Quadfecta"].includes(name)) {
             addNodeToDocument(node, "checkboxes-categories-multi");
@@ -3019,7 +3017,7 @@ NEW_COLUMNS.player = {
 }
 NEW_COLUMNS.time = {
     header: "Time",
-    text: entry => formatTimeFromISO(entry.item.runs[0].times.primary),
+    text: entry => formatTimeFromSecondsToDecimal(entry.item.runs[0].times.primary_t),
     link: entry => entry.item.runs[0].weblink
 }
 NEW_COLUMNS.firsts = {
