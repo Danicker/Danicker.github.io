@@ -3,14 +3,6 @@
     border: 1px solid red;
 }
 
-/* #div1 {
-    border: 1px solid aqua;
-}
-
-#div2 {
-    border: 1px solid lime;
-} */
-
 /* HEADERS */
 .arrow-button {
     font-size: 80%;
@@ -32,6 +24,101 @@
     display: inline-block;
     min-width: 100px;
     text-align: center;
+}
+
+/* OPTIONS BAR */
+#optionsbar {
+    float: right;
+}
+
+#optionsbar * {
+    margin: 0px 5px 0px 5px;
+}
+
+#sobdiv {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+#sobdiv * {
+    /* border: 1px solid red; */
+    margin: 0;
+}
+
+#sobdiv label {
+    vertical-align: -25%;
+}
+
+#info {
+    font-size: 1.8em;
+}
+
+/* Circle from: https://jsfiddle.net/hg7nP/7/ */
+.circle {
+    display: inline-block;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    width: 1.8ex;
+    height: 1.8ex;
+    font-size: 1.4ex;
+    line-height: 2ex;
+    border-radius: 1.2ex;
+    margin-right: 4px;
+    padding: 1px;
+    color: white;
+    background: transparent;
+    border: 1px solid white;
+    text-decoration: none;
+}
+
+.circle:hover {
+    color: #333333;
+    background: white;
+    border-color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* POP UP */
+html {
+    padding: 0px;
+}
+
+#main-div {
+    padding: 20px;
+}
+
+#popup-div {
+    visibility: hidden;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#popup {
+    margin: 5% 25% 5% 25%;
+    padding: 20px 40px 20px 40px;;
+    background: #333333;
+}
+
+#popup h1 {
+    text-align: center;
+}
+
+#popup-close {
+    float: right;
+    font-size: 0.8em;
+}
+
+#popup-close:hover {
+    color: #ccc;
+    cursor: pointer;
+}
+
+#popup p {
+    font-size: 1em;
 }
 
 /* HORIZONTAL FORMAT */

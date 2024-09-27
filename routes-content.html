@@ -2,20 +2,49 @@
 <html>
     <head>
         <link rel="stylesheet" href="general-style.css">
+        <link rel="stylesheet" href="slider.css">
         <link rel="stylesheet" href="routes.css">
     </head>
     <body>
-        <h1 class="header">
-            <span class="arrow-button" id="game-minus">⯇</span>
-            <span id="game-header">TWHG1</span>
-            <span class="arrow-button" id="game-plus">⯈</span>
-        </h1>
-        <h2 class="header">
-            <span class="arrow-button" id="level-minus">⯇</span>
-            <span id="level-header">Level 1</span>
-            <span class="arrow-button" id="level-plus">⯈</span>
-        </h2>
-        <div id="route-list"></div>
+        <div id="popup-div">
+            <div id="popup">
+                <h1>
+                    INFO
+                    <span id="popup-close" onclick="closePopup()">&#x2715</span>
+                </h1>
+                <p>
+                    This is the Route List for The World's Hardest Game. Here you can browse speedrun routes for TWHG1 and TWHG2 (no support for TWHG3 and TWHG4 yet).
+                    <ul>
+                        <li>The route list is a work-in-progress, some levels are still missing key routes/details. More routes and details will be added over time.</li>
+                        <li>If you see a route that says "This video is unavailable", then it probably means there is no video for that route.</li>
+                        <li>If you would like to contribute to the Route List, contact Danicker on discord.</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        <div id="main-div">
+            <div id="optionsbar">
+                <span hidden=true id="sobdiv">
+                    <span>SOB</span>
+                    <label class="switch">
+                        <input type="checkbox" id="sobtoggle">
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+                <span class="circle" id="info" onclick="openPopup()">?</span>
+            </div>
+            <h1 class="header">
+                <span class="arrow-button" id="game-minus">⯇</span>
+                <span id="game-header">TWHG1</span>
+                <span class="arrow-button" id="game-plus">⯈</span>
+            </h1>
+            <h2 class="header">
+                <span class="arrow-button" id="level-minus">⯇</span>
+                <span id="level-header">Level 1</span>
+                <span class="arrow-button" id="level-plus">⯈</span>
+            </h2>
+            <div id="route-list"></div>
+        </div>
         <script src="routes.js"></script>
     </body>
 </html>

@@ -1,4 +1,5 @@
-console.log("SCRIPT LOADED: leaderboards-data.js");
+// TWHG LEADERBOARDS SYSTEM
+// By Danicker
 
 var IDS = {
     "games": {
@@ -1841,10 +1842,10 @@ async function useCurrentSeriesIds(ids) {
 }
 
 // Loading
-var totalLoadAmount = 2200;
+var totalLoadAmount = 20; // estimated number of requests, 17 as of Sep 2024
 var currentLoadAmount = 0;
 function updateLoadingBar(amount) {
-    currentLoadAmount += amount;
+    currentLoadAmount += 1;
     var loadedPercentage = Math.min(100, 100 * currentLoadAmount / totalLoadAmount);
     document.getElementById("loading-bar").style.width = loadedPercentage + '%';
 }
@@ -1855,8 +1856,8 @@ function updateGenerateLoadingBar(amount) {
 // Id Fetching -- DO NOT DELETE THIS
 document.getElementById("main-page").style.display = "none";
 var allRuns = [];
-// fetchSeriesIds(SERIES).then(ids => {
-useCurrentSeriesIds(IDS).then(ids => {
+fetchSeriesIds(SERIES).then(ids => {
+// useCurrentSeriesIds(IDS).then(ids => {
 
     console.log("IDS Fetched", ids);
     IDS = ids;
@@ -1865,7 +1866,7 @@ useCurrentSeriesIds(IDS).then(ids => {
 
     // Request all runs
     var multipagePromises = Object.values(IDS.games).map(id => getMultipagePromise(
-        createURL(SRC_API, ["runs"], {game: id, max: SRC_MAX}), 
+        createURL(SRC_API, ["runs"], {game: id, embed: "players", max: SRC_MAX}), //, embed: "players"
         [],
         updateLoadingBar
     ));
@@ -1876,33 +1877,40 @@ useCurrentSeriesIds(IDS).then(ids => {
 }).then(result => {
 
     console.timeEnd("request all runs");
+    console.log("all games requests:", result);
 
     // All runs received
     allRuns = result.map(pages => pages.map(page => page.data)).flat(2);
     console.log("All Runs", allRuns);
+    console.log("Players:", allRuns.map(run => run.players.data[0]));
+    // console.log("roles:", allRuns.map(run => run.players.data[0].role));
 
     // Now request all (missing) players
-    var playerIds = new Set();
-    for (const run of allRuns) {
-        if (run.players[0].rel == "user") {
-            playerIds.add(run.players[0].id);
-        }
-    }
-    var missingPlayers = Array.from(playerIds.values()).filter(playerId => !Object.keys(PLAYERS).includes(playerId));
-    var playerPromises = missingPlayers.map(playerId => getFetchPromise(createURL(SRC_API, ["users", playerId])));
+    // var playerIds = new Set();
+    // for (const run of allRuns) {
+    //     if (run.players[0].rel == "user") {
+    //         playerIds.add(run.players[0].id);
+    //     }
+    // }
+    // var missingPlayers = Array.from(playerIds.values()).filter(playerId => !Object.keys(PLAYERS).includes(playerId));
+    // var playerPromises = missingPlayers.map(playerId => getFetchPromise(createURL(SRC_API, ["users", playerId])));
+    // console.log("missing players:", missingPlayers.length);
+    // var playerPromises = Array.from(playerIds.values()).map(playerId => getFetchPromise(createURL(SRC_API, ["users", playerId])));
+    var playerPromises = [] // TEMP: player promises no longer needed
     return Promise.all(playerPromises);
 
 }).then(results => {
 
     // Record player names
-    console.log("Results: ", results);
-    for (const playerData of results) {
-        PLAYERS[playerData.data.id] = {
-            name: playerData.data.names.international,
-            nameStyle: playerData.data["name-style"]
-        }
-    }
-    console.log("PLAYERS", PLAYERS);
+    // console.log("Results: ", results);
+    // for (const playerData of results) {
+    //     PLAYERS[playerData.data.id] = {
+    //         name: playerData.data.names.international,
+    //         nameStyle: playerData.data["name-style"]
+    //     }
+    // }
+    // console.log("PLAYERS", PLAYERS);
+    // console.log("Player count:", Object.keys(PLAYERS).length);
     // console.log(formatJSON(JSON.stringify(PLAYERS),"    ",2));
 
     // Switch pages
@@ -2033,7 +2041,6 @@ function initSelectors() {
 
     // URL Parameters
     var params = new URLSearchParams(window.location.search);
-    console.log(Array.from(params.values()));
 
     // Leaderboard Type Selector
     addNodeToDocument(leaderboardTypeSelector, "leaderboard-type-selector-container");
@@ -2321,7 +2328,8 @@ function initSelectors() {
     }
     for (var level in IDS.levels.whg1) {
         categoryNames.whg1[level] = {
-            "Start to Finish": ["Any%", "100%", "Any% Glitched", "100% Glitched"]
+            "Flash": ["Any%", "100%", "Any% Glitched", "100% Glitched"],
+            "HTML5": ["HTML5"]
         };
     }
     for (var level in IDS.levels.whg2) {
@@ -2477,7 +2485,8 @@ function variableApplies(variable, game, level, category) {
     }
 }
 
-var TRANSITION_FRAMES = {
+// One unit = 1/120 of a second
+var TRANSITION_UNITS = {
     whg1: {
         "": {
             "Any%": 0
@@ -2529,31 +2538,32 @@ for (var level in IDS.levels.whg1) {
     } else {
         frames = 44;
     }
-    TRANSITION_FRAMES.whg1[level] = {
-        "Start to Finish": frames
+    TRANSITION_UNITS.whg1[level] = {
+        "Flash": frames * 4,
+        "HTML5": 4 * 120 // TEMP: 4 seconds per level
     };
 }
 for (var level in IDS.levels.whg2) {
     if (level.includes("Tutorial")) {
-        TRANSITION_FRAMES.whg2[level] = {
+        TRANSITION_UNITS.whg2[level] = {
             "Glitchless": 0,
             "Any%": 0
         };
     } else {
-        TRANSITION_FRAMES.whg2[level] = {
-            "Glitchless": 30,
-            "Any%": 30
+        TRANSITION_UNITS.whg2[level] = {
+            "Glitchless": 30 * 4,
+            "Any%": 30 * 4
         };
     }
 }
 for (var level in IDS.levels.whg3) {
-    TRANSITION_FRAMES.whg3[level] = {
+    TRANSITION_UNITS.whg3[level] = {
         "Any%": 0,
         "100%": 0
     }
 }
 for (var level in IDS.levels.whg4) {
-    TRANSITION_FRAMES.whg4[level] = {
+    TRANSITION_UNITS.whg4[level] = {
         "Any% Glitchless": 0,
         "100% Glitchless": 0,
         "Any%": 0
@@ -2568,17 +2578,17 @@ for (var level in IDS.levels.whgext) {
     } else {
         frames = 44;
     }
-    TRANSITION_FRAMES.whgext[level] = {
-        "WHG1 Backwards": frames
+    TRANSITION_UNITS.whgext[level] = {
+        "WHG1 Backwards": frames * 4
     };
 }
 
-function getTransitionFrames(run) {
+function getTransitionUnits(run) {
     game = getKeyFromValue(IDS.games, run.game);
     level = getKeyFromValue(IDS.levels[game], run.level) ?? "";
     scope = level==""? "per-game" : "per-level";
     category = getKeyFromValue(IDS.categories[game][scope], run.category);
-    return TRANSITION_FRAMES[game][level][category];
+    return TRANSITION_UNITS[game][level][category];
 }
 
 /////////////
@@ -2730,152 +2740,152 @@ var dateComparison = getComparison(getCompare(run => run.date))
 // IDENTIFIERS //
 /////////////////
 playerIdentifier = function(run) {
-    return run.players[0].uri;
+    return getPlayerDisplayName(run.players.data[0]);
 }
 
 /////////////
 // COLUMNS //
 /////////////
 
-var COLUMNS = {};
-COLUMNS.place = {
-    header: "Place",
-    function: entry => entry.place
-}
-COLUMNS.player = {
-    header: "Player",
-    function: entry => getDisplayName(entry.item.players[0])
-}
-COLUMNS.player2 = {
-    header: "Player",
-    function: entry => entry.playerId
-}
-COLUMNS.player3 = {
-    header: "Player",
-    function: entry => entry.item.playerId
-}
-COLUMNS.time = {
-    header: "Time",
-    function: entry => formatTimeFromSecondsToDecimal(entry.item.times.primary_t)
-}
-COLUMNS.sob = {
-    header: "Sum of Best",
-    function: entry => formatTimeFromSecondsToDecimal(entry.item.sob)
-}
-COLUMNS.firsts = {
-    header: "1st",
-    function: entry => entry.medalCount[1] ?? 0
-}
-COLUMNS.seconds = {
-    header: "2nd",
-    function: entry => entry.medalCount[2] ?? 0
-}
-COLUMNS.thirds = {
-    header: "3rd",
-    function: entry => entry.medalCount[3] ?? 0
-}
-COLUMNS.date = {
-    header: "Date",
-    function: entry => entry.item.date
-}
-COLUMNS.daysAgo = {
-    header: "Date",
-    function: entry => writeDaysAgo(entry.item.date)
-}
-// NOTE: This doesn't work yet, it's hardcoded for 311.066 (whg1 wr)
-COLUMNS.percentCompare = {
-    header: "Percent Behind",
-    function: entry => Math.round(((entry.item.times.primary_t - 311.066) / 311.066) * 1000) / 10 + "%"
-}
-COLUMNS.null = {
-    header: null,
-    function: entry => null
-}
-COLUMNS.srcUserLink = {
-    header: null,
-    function: function(entry) {
-        var player = entry.item.players[0];
-        if (player.rel == "guest" || !(player.id in PLAYERS)) {
-            return null;
-        } else {
-            return createURL(SRC_COM, ["user", getDisplayName(player)]);
-        }
-    }
-}
-COLUMNS.srcRunLink = {
-    header: null,
-    function: entry => entry.item.weblink
-}
+// var COLUMNS = {};
+// COLUMNS.place = {
+//     header: "Place",
+//     function: entry => entry.place
+// }
+// COLUMNS.player = {
+//     header: "Player",
+//     function: entry => getDisplayName(entry.item.players[0])
+// }
+// COLUMNS.player2 = {
+//     header: "Player",
+//     function: entry => entry.playerId
+// }
+// COLUMNS.player3 = {
+//     header: "Player",
+//     function: entry => entry.item.playerId
+// }
+// COLUMNS.time = {
+//     header: "Time",
+//     function: entry => formatTimeFromSecondsToDecimal(entry.item.times.primary_t)
+// }
+// COLUMNS.sob = {
+//     header: "Sum of Best",
+//     function: entry => formatTimeFromSecondsToDecimal(entry.item.sob)
+// }
+// COLUMNS.firsts = {
+//     header: "1st",
+//     function: entry => entry.medalCount[1] ?? 0
+// }
+// COLUMNS.seconds = {
+//     header: "2nd",
+//     function: entry => entry.medalCount[2] ?? 0
+// }
+// COLUMNS.thirds = {
+//     header: "3rd",
+//     function: entry => entry.medalCount[3] ?? 0
+// }
+// COLUMNS.date = {
+//     header: "Date",
+//     function: entry => entry.item.date
+// }
+// COLUMNS.daysAgo = {
+//     header: "Date",
+//     function: entry => writeDaysAgo(entry.item.date)
+// }
+// // NOTE: This doesn't work yet, it's hardcoded for 311.066 (whg1 wr)
+// COLUMNS.percentCompare = {
+//     header: "Percent Behind",
+//     function: entry => Math.round(((entry.item.times.primary_t - 311.066) / 311.066) * 1000) / 10 + "%"
+// }
+// COLUMNS.null = {
+//     header: null,
+//     function: entry => null
+// }
+// COLUMNS.srcUserLink = {
+//     header: null,
+//     function: function(entry) {
+//         var player = entry.item.players[0];
+//         if (player.rel == "guest" || !(player.id in PLAYERS)) { // TAG 1 (old?)
+//             return null;
+//         } else {
+//             return createURL(SRC_COM, ["user", getDisplayName(player)]);
+//         }
+//     }
+// }
+// COLUMNS.srcRunLink = {
+//     header: null,
+//     function: entry => entry.item.weblink
+// }
 
-COLUMNS.playerClass = {
-    header: null,
-    function: entry => "column-player"
-}
+// COLUMNS.playerClass = {
+//     header: null,
+//     function: entry => "column-player"
+// }
 
-// COLUMN SETS
-var COLUMN_SET = {
-    "Normal Leaderboard": {
-        texts: [
-            COLUMNS.place,
-            COLUMNS.player,
-            COLUMNS.time,
-            COLUMNS.date
-        ],
-        links: [
-            COLUMNS.null,
-            COLUMNS.srcUserLink,
-            COLUMNS.srcRunLink,
-            COLUMNS.null
-        ]
-    },
-    "Medal Counts": {
-        texts: [
-            COLUMNS.place,
-            COLUMNS.player2,
-            COLUMNS.firsts,
-            COLUMNS.seconds,
-            COLUMNS.thirds
-        ],
-        links: [
-            COLUMNS.null,
-            COLUMNS.null,
-            COLUMNS.null,
-            COLUMNS.null,
-            COLUMNS.null
-        ],
-        classes: [
-            COLUMNS.null,
-            COLUMNS.playerClass,
-            COLUMNS.null,
-            COLUMNS.null,
-            COLUMNS.null
-        ]
-    },
-    "Sum of Best": {
-        texts: [
-            COLUMNS.place,
-            COLUMNS.player3,
-            COLUMNS.sob
-        ],
-        links: [
-            COLUMNS.null,
-            COLUMNS.null,
-            COLUMNS.null
-        ]
-    },
-    "Recent Runs": {
-        texts: [
-            COLUMNS.player,
-            COLUMNS.time,
-            COLUMNS.daysAgo
-        ],
-        links: [
-            COLUMNS.srcUserLink,
-            COLUMNS.srcRunLink,
-            COLUMNS.null
-        ]
-    }
-};
+// // COLUMN SETS
+// var COLUMN_SET = {
+//     "Normal Leaderboard": {
+//         texts: [
+//             COLUMNS.place,
+//             COLUMNS.player,
+//             COLUMNS.time,
+//             COLUMNS.date
+//         ],
+//         links: [
+//             COLUMNS.null,
+//             COLUMNS.srcUserLink,
+//             COLUMNS.srcRunLink,
+//             COLUMNS.null
+//         ]
+//     },
+//     "Medal Counts": {
+//         texts: [
+//             COLUMNS.place,
+//             COLUMNS.player2,
+//             COLUMNS.firsts,
+//             COLUMNS.seconds,
+//             COLUMNS.thirds
+//         ],
+//         links: [
+//             COLUMNS.null,
+//             COLUMNS.null,
+//             COLUMNS.null,
+//             COLUMNS.null,
+//             COLUMNS.null
+//         ],
+//         classes: [
+//             COLUMNS.null,
+//             COLUMNS.playerClass,
+//             COLUMNS.null,
+//             COLUMNS.null,
+//             COLUMNS.null
+//         ]
+//     },
+//     "Sum of Best": {
+//         texts: [
+//             COLUMNS.place,
+//             COLUMNS.player3,
+//             COLUMNS.sob
+//         ],
+//         links: [
+//             COLUMNS.null,
+//             COLUMNS.null,
+//             COLUMNS.null
+//         ]
+//     },
+//     "Recent Runs": {
+//         texts: [
+//             COLUMNS.player,
+//             COLUMNS.time,
+//             COLUMNS.daysAgo
+//         ],
+//         links: [
+//             COLUMNS.srcUserLink,
+//             COLUMNS.srcRunLink,
+//             COLUMNS.null
+//         ]
+//     }
+// };
 
 /////////////////
 // NEW COLUMNS //
@@ -2884,8 +2894,8 @@ var COLUMN_SET = {
 function getPlayerListFromRuns(runs) {
     var playerList = [];
     for (const run of runs) {
-        for (const player of run.players) {
-            if (playerList.filter(p => p.uri == player.uri).length == 0) {
+        for (const player of run.players.data) {
+            if (playerList.filter(p => getPlayerDisplayName(p) == getPlayerDisplayName(player)).length == 0) {
                 playerList.push(player);
             }
         }
@@ -2894,24 +2904,25 @@ function getPlayerListFromRuns(runs) {
 }
 
 function getNumberedPlayerListFromRuns(runs) {
-    var allPlayers = runs.map(run => run.players).flat(1);
+    var allPlayers = runs.map(run => run.players.data).flat(1);
     var playerCounts = {};
     var playerObjects = {};
+    var uuid = getPlayerDisplayName;
     for (const player of allPlayers) {
-        if (!(player.uri in playerCounts)) {
-            playerCounts[player.uri] = 0;
-            playerObjects[player.uri] = player;
+        if (!(uuid(player) in playerCounts)) {
+            playerCounts[uuid(player)] = 0;
+            playerObjects[uuid(player)] = player;
         }
-        playerCounts[player.uri]++;
+        playerCounts[uuid(player)]++;
     }
     var playerList = [];
-    for (uri of Object.keys(playerCounts)) {
+    for (id of Object.keys(playerCounts)) {
         var inserted = false;
         for (var i = 0; i < playerList.length; i++) {
-            if (!inserted && playerList[i].count < playerCounts[uri]) {
+            if (!inserted && playerList[i].count < playerCounts[id]) {
                 playerList.splice(i, 0, {
-                    player: playerObjects[uri],
-                    count: playerCounts[uri]
+                    player: playerObjects[id],
+                    count: playerCounts[id]
                 });
                 inserted = true;
                 break;
@@ -2919,8 +2930,8 @@ function getNumberedPlayerListFromRuns(runs) {
         }
         if (!inserted) {
             playerList.push({
-                player: playerObjects[uri],
-                count: playerCounts[uri]
+                player: playerObjects[id],
+                count: playerCounts[id]
             })
         }
     }
@@ -2953,7 +2964,7 @@ NEW_COLUMNS.player = {
         if (playerList.length == 0) {
             return "None";
         } else if (playerList.length == 1) {
-            return getDisplayName(playerList[0]);
+            return getPlayerDisplayName(playerList[0]);
         } else {
             return "Multiple";
         }
@@ -2967,7 +2978,7 @@ NEW_COLUMNS.player = {
             if (player.rel == "guest") {
                 return null;
             } else {
-                return getPlayerNameColor(player, "color-from");
+                return getPlayerNameColorFrom(player);
             }
         } else {
             return "#000000";
@@ -2982,7 +2993,7 @@ NEW_COLUMNS.player = {
             if (player.rel == "guest") {
                 return null;
             } else {
-                return getPlayerNameColor(player, "color-to");
+                return getPlayerNameColorTo(player); 
             }
         } else {
             return "#000000";
@@ -2992,10 +3003,10 @@ NEW_COLUMNS.player = {
         var playerList = getPlayerListFromRuns(entry.item.runs);
         if (playerList.length == 1) {
             var player = playerList[0];
-            if (player.rel == "guest" || !(player.id in PLAYERS)) {
-                return null;
+            if (player.weblink) {
+                return player.weblink
             } else {
-                return createURL(SRC_COM, ["user", getDisplayName(player)]);
+                return null;
             }
         } else {
             return null;
@@ -3012,7 +3023,7 @@ NEW_COLUMNS.player = {
     tooltip: function(entry) {
         var playerList = getNumberedPlayerListFromRuns(entry.item.runs);
         if (playerList.length <= 1) return "";
-        return playerList.map(playerPair => getDisplayName(playerPair.player) + " (" + playerPair.count + ")").join("\n");
+        return playerList.map(playerPair => getPlayerDisplayName(playerPair.player) + " (" + playerPair.count + ")").join("\n");
     }
 }
 NEW_COLUMNS.time = {
@@ -3092,7 +3103,7 @@ const GENERIC_NAMESTYLE = {
 }
 function getPlayerNameStyle(player) {
     if (player.rel == "user") {
-        if (player.id in PLAYERS) {
+        if (player.id in PLAYERS) { // TAG 3
             return PLAYERS[player.id].nameStyle;
         }
     }
@@ -3214,7 +3225,6 @@ function getTable() {
     if (leaderboard.length == 0) {
         return document.createTextNode("This leaderboard is empty.");
     }
-    console.log("Leaderboard for Table: ", leaderboard);
 
     // Convert Leaderboard to Table Values NEW
     if (leaderboardTypeSelector.value == "Medal Counts") {
@@ -3269,7 +3279,7 @@ function generateLeaderboard() {
 
     // Generates a leaderboard for each of the categories included
     var runSets = categoryFilters.map(filter => allRuns.filter(filter));
-    var mutExFunc = getComparison(getCompare(run => getDisplayName(run.players[0])))('=');
+    var mutExFunc = getComparison(getCompare(run => getPlayerDisplayName(run.players.data[0])))('=');
     if (leaderboardTypeSelector.value == "Recent Runs") {
         mutExFunc = getComparison(getCompare(run => run.id))('=');
     }
@@ -3498,7 +3508,7 @@ function getMedalCounts(leaderboards, comparison) {
             if (i == 0 || comparison(leaderboard[i-1].item, leaderboard[i].item)) {
                 place = Number(i) + 1;
             }
-            var playerId = getDisplayName(leaderboard[i].item.players[0]);
+            var playerId = getPlayerDisplayName(leaderboard[i].item.players.data[0]);
             if (!(playerId in medals)) {
                 medals[playerId] = {};
             }
@@ -3567,48 +3577,8 @@ function getMedalCountEntries(leaderboards, identifier) {
     return Object.values(identities);
 }
 
-// Generates a Sum of Best leaderboard based on a list of leaderboards
-function getSOBLeaderboard(leaderboards) {
-    var playerTimes = {};
-    var communityTimes = [];
-    for (var i in leaderboards) {
-        if (leaderboards[i].length == 0) {
-            break;
-        }
-        communityTimes[i] = timeFromSecondsToFrames(leaderboards[i][0].item.times.primary_t) + getTransitionFrames(leaderboards[i][0].item);
-        for (var entry of leaderboards[i]) {
-            var playerId = getDisplayName(entry.item.players[0]);
-            var time = timeFromSecondsToFrames(entry.item.times.primary_t) + getTransitionFrames(entry.item);
-            if (!playerTimes[playerId]) {
-                playerTimes[playerId] = [];
-            }
-            playerTimes[playerId][i] = time;
-        }
-    }
-    var playerSOBs = [];
-    for (const [playerId, times] of Object.entries(playerTimes)) {
-        if (definedLength(times) == leaderboards.length) {
-            playerSOBs.push({
-                playerId: playerId,
-                sob: timeFromFramesToSeconds(sum(times))
-            });
-        }
-    }
-    var leaderboard = rankItems(playerSOBs, (entry1, entry2) => entry1.sob < entry2.sob, (entry1, entry2) => false);
-    if (definedLength(communityTimes) == leaderboards.length) {
-        leaderboard.unshift({
-            place: 0, 
-            item: {
-                playerId: "Community", 
-                sob: timeFromFramesToSeconds(sum(communityTimes))
-            }
-        });
-    }
-    return leaderboard;
-}
-
 function calculateSOB(runs, extraFrames) {
-    return timeFromFramesToSeconds(extraFrames + runs.reduce((acc, curr) => acc + timeFromSecondsToFrames(curr.times.primary_t), 0));
+    return timeFromFramesToSeconds(extraFrames + runs.reduce((acc, curr) => acc + timeFromSecondsToFrames(curr.times.primary_t, 120), 0), 120);
 }
 
 function getSOBLeaderboardNEW(leaderboards, identifier) {
@@ -3629,7 +3599,7 @@ function getSOBLeaderboardNEW(leaderboards, identifier) {
             identityRuns[identity].push(entry.item);
         }
     }
-    var totalTransitionFrames = sum(communityRuns.map(run => getTransitionFrames(run)));
+    var totalTransitionUnits = sum(communityRuns.map(run => getTransitionUnits(run)));
 
     identityCompleteRunSets = Object.values(identityRuns).filter(runs => runs.length == leaderboards.length);
 
@@ -3637,7 +3607,7 @@ function getSOBLeaderboardNEW(leaderboards, identifier) {
     identityEntries = identityCompleteRunSets.map(runs => {
         return {
             runs: runs,
-            sob: calculateSOB(runs, totalTransitionFrames)
+            sob: calculateSOB(runs, totalTransitionUnits)
         }
     });
     var leaderboard = rankItems(identityEntries, (entry1, entry2) => entry1.sob < entry2.sob, (entry1, entry2) => false);
@@ -3650,7 +3620,7 @@ function getSOBLeaderboardNEW(leaderboards, identifier) {
             place: 0,
             item: {
                 runs: communityRuns,
-                sob: calculateSOB(communityRuns, totalTransitionFrames)
+                sob: calculateSOB(communityRuns, totalTransitionUnits)
             }
         });
     }
@@ -3845,7 +3815,7 @@ function getDisplayName(player) {
     if (player.rel == "guest") {
         return player.name;
     } else if (player.rel == "user") {
-        if (player.id in PLAYERS) {
+        if (player.id in PLAYERS) { // TAG 4
             return PLAYERS[player.id].name;
         }
         return player.id;
@@ -3928,11 +3898,11 @@ function formatTimeFromSecondsToDecimal(totalSeconds, alwaysIncludeMillis=false)
 
     return s;
 }
-function timeFromSecondsToFrames(time) {
-    return Math.round(time * 30);
+function timeFromSecondsToFrames(time, fps=30) {
+    return Math.round(time * fps);
 }
-function timeFromFramesToSeconds(frames) {
-    return Math.floor(frames * 1000 / 30) / 1000;
+function timeFromFramesToSeconds(frames, fps=30) {
+    return Math.floor(frames * 1000 / fps) / 1000;
 }
 // Converts a date object into yyyy-mm-dd format
 function dateToString(date) {
@@ -3995,4 +3965,50 @@ function formatDate(date) {
     var month = yearMonthDate[1];
     var day = yearMonthDate[2];
     return day + " " + monthNames[Number(month) - 1] + " " + year;
+}
+
+/////////////////////////////
+// NEW Player Name Display //
+/////////////////////////////
+
+// Code copied from leaderboards-module-leaderboard-generator.js
+// Uses embedded player structure
+
+function getPlayerNameColorFrom(player, mode="dark") {
+    var nameStyle = player["name-style"];
+    if (player.role == "banned") {
+        return {light: "#808080", dark: "#808080"}[mode];
+    }
+    if (nameStyle) {
+        if (nameStyle.style == "solid") {   
+            return nameStyle["color"][mode];
+        } else if (nameStyle.style == "gradient") {
+            return nameStyle["color-from"][mode];
+        }
+    }
+    return {light: "#000000", dark: "#ffffff"}[mode];
+}
+function getPlayerNameColorTo(player, mode="dark") {
+    var nameStyle = player["name-style"];
+    if (player.role == "banned") {
+        return {light: "#808080", dark: "#808080"}[mode];
+    }
+    if (nameStyle) {
+        if (nameStyle.style == "solid") {   
+            return nameStyle["color"][mode];
+        } else if (nameStyle.style == "gradient") {
+            return nameStyle["color-to"][mode];
+        }
+    }
+    return {light: "#000000", dark: "#ffffff"}[mode];
+}
+function getPlayerDisplayName(player) {
+    if (player.rel == "user") {
+        return player.names.international;
+    } else if (player.rel == "guest") {
+        return player.name; // Does not work well for japanese names: e.g. "[jp]しろま (Shiromanavi)"
+    } else {
+        console.warn("unknown player rel type", player);
+        return "Unknown";
+    }
 }

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="general-style.css">
+    </head>
+    <body>
+        <h1>Wiki</h1>
+        <p>This is The World's Hardest Game Wiki. Currently it only contains the Glitch List, but this will be expanded later. A big thanks to Fraims for writing the glitch list.</p>
+
+        <h2>Glitch List</h2>
+        <p>
+            The following is a list of all the glitches, exploits and oversights in the World’s Hardest Game series. Note that we use the word "glitch" in a broad sense, not all of these are really glitches, some are just interesting edge cases in the game's behaviour. The list is sorted by categories based on importance, and then roughly ordered by game and first occurrence.
+        </p>
+
+        <div class="contents_table">
+            <b>Contents</b>
+            <ul>
+                <li><a href="#Detrimental_Glitches">Detrimental Glitches</a></li>
+                <li><a href="#Major_Glitches">Major Glitches</a></li>
+                <li><a href="#Minor_Glitches">Minor Glitches</a></li>
+                <li><a href="#Useless_Glitches">Useless Glitches</a></li>
+                <li><a href="#Graphical_Glitches">Graphical Glitches</a></li>
+            </ul>
+        </div>
+
+        <h3 id="Detrimental_Glitches">Detrimental Glitches</h3>
+        <p>
+            This category lists glitches that are likely to be encountered by a casual player, and can have negative consequences such as softlocking or losing progress. These glitches are useful to know about in order to avoid them.
+        </p>
+        <br>
+        <table class="glitch_table">
+            <tr>
+                <th>Glitch</th>
+                <th>Games</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td id="Fake_Continue">Fake Continue</td>
+                <td>3</td>
+                <td>
+                    If the game is opened while save data is not present (usually the first time the game is opened), then the “CONTINUE” checkpoint will always send you to the Level 1 tip screen, even after save data has been created. If you then proceed through the tips, your save data will be overwritten to the start of Level 1. To prevent this, close and reopen the game instead. If the game is opened while having save data, continuing will work normally.
+                </td>
+            </tr>
+            <tr>
+                <td id="Coin_Counter_Decrementation">Coin Counter Decrementation</td>
+                <td>3</td>
+                <td>
+                    Going to the main menu and continuing while having coins collected but not saved, will respawn the coins but cause the coin counter to decrement twice the amount that it should, although it can’t go below zero. If caught, it can be fixed by closing and reopening the game.
+                </td>
+            </tr>
+            <tr>
+                <td id="Savewarp_Softlock">Savewarp Softlock</td>
+                <td>3,4</td>
+                <td>
+                    Disabling and enabling autosaving while not on a checkpoint in certain areas can lead to softlocking or losing progress. More information at <a href="#Savewarp">savewarp</a>.
+                </td>
+            </tr>
+            <tr>
+                <td id="Cutscene_Death_Softlock">Cutscene Death Softlock</td>
+                <td>4</td>
+                <td>
+                    Pausing during a cutscene allows the player to die during a cutscene, which can lead to softlocks. Can also happen by respawning onto a cutscene in for example 4-D3. Fixed by simply loading the game. More information at cutscene death.
+                </td>
+            </tr>
+            <tr>
+                <td id="Invisible_Door">Invisible Door</td>
+                <td>3</td>
+                <td>
+                    Continuing during a level may cause the collision of a previously opened door to reappear, trapping the player. Seemingly rare and exclusive to the 1.0 version.
+                </td>
+            </tr>
+            <tr>
+                <td id="Ice_WASD">Ice WASD</td>
+                <td>4</td>
+                <td>
+                    On the 1.1 version, the WASD keys aren’t properly programmed in regards to ice acceleration and wall corners, making it impossible to move fast on ice or enter one tile gaps without the arrow keys. Fixed on the 1.2 version.
+                </td>
+            </tr>
+            <tr>
+                <td id="Flash_Player_Weirdness">Flash Player Weirdness</td>
+                <td>3,4</td>
+                <td>
+                    Sometimes the games will not work correctly due to how flash is set up, for example not allowing it to save locally can cause a death loop in TWHG4.
+                </td>
+            </tr>
+        </table>
+        <br>
+        <p>
+            Lastly, while not a glitch, it’s possible to softlock in TWHG3 L4-A2 by getting to the checkpoint in the middle without having collected all the coins in the level. While it’s unlikely for a casual player to fall into this trap, it remains technically possible.
+        </p>
+
+        <h3 id="Major_Glitches">Major Glitches</h3>
+        <p>
+            This category lists glitches that are relatively well known within the community, because they’re either applicable in most places, have major consequences, or are used in speedruns. Some of these are not considered glitches for the purposes of glitchless speedruns, and some of these are not allowed in any speedrun. This has been outlined in detail in the leaderboard rules.
+        </p>
+        <br>
+        <table class="glitch_table">
+            <tr>
+                <th>Glitch</th>
+                <th>Games</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td id="Enemy_Clip">Enemy Clip</td>
+                <td>1,2,3,4</td>
+                <td>
+                    Due to how flash handles collision detection, enemy hitboxes become smaller as they move faster. Since the player hitbox consists of five (TWHG1) or nine pixels arranged in a grid, sometimes the enemy hitboxes can fit inside the player without colliding.
+                </td>
+            </tr>
+            <tr>
+                <td id="Wall_Clip">Wall Clip</td>
+                <td>1,2</td>
+                <td>
+                    By moving into a corner and continuing to hold the direction towards the wall, the player can partially clip into the wall. This is only possible to a lesser degree in TWHG2 because of an additional wall check.
+                </td>
+            </tr>
+            <tr>
+                <td id="Corner_Boost">Corner Boost</td>
+                <td>1,2,3</td>
+                <td>
+                    Following a wall clip, it’s possible to be pushed outward by a wall in the same direction as the player is moving, doubling the distance moved for one frame. In TWHG2, this is possible without a prior wall clip due to the altered player hitbox. In TWHG3 there are no wall clips, although corners will still push the player up to three additional pixels.
+                </td>
+            </tr>
+            <tr>
+                <td id="Resolutions">Resolutions/Quality</td>
+                <td id="Quality">1,2,3,4</td>
+                <td>
+                    Changing the size of the window or the quality of the game will affect how the game is rendered, which in turn affects how collision detection is handled. While not exactly a glitch, it heavily affects wall clips and enemy clips.
+                </td>
+            </tr>
+            <tr>
+                <td id="Resize_Glitch">Resize Glitch</td>
+                <td>1,2,3,4</td>
+                <td>
+                    In TWHG1 and TWHG2, by making the game window very small, the enemy and wall hitboxes will not render and it’s possible to move through them. In TWHG3 and TWHG4, enemy hitboxes will disappear as well, although walls will still exist. However, in some cases it becomes possible to reach checkpoints early.
+                </td>
+            </tr>
+            <tr>
+                <td id="Right_Click_Play">Right-Click Play/ Ctrl+Enter</td>
+                <td>1,(2)</td>
+                <td>
+                    Using this debug feature of flash, TWHG1 will act like an animation and quickly skip to the end screen. In TWHG2, it’s possible to skip levels, but it becomes impossible to beat any levels after doing this.
+                </td>
+            </tr>
+            <tr>
+                <td id="Pause_Spam">Pause Spam</td>
+                <td>2</td>
+                <td>
+                    Pausing the game on the same frame as hitting an enemy will prevent a death from occurring. By holding the pause button it’s possible, though inconsistent, to pause every frame and go through enemies.
+                </td>
+            </tr>
+            <tr>
+                <td id="Intermission_Pause">Intermission Pause</td>
+                <td>2</td>
+                <td>
+                    If you pause during a text screen (that isn’t preceded by a tip) the game will continue as normal, allowing the player to move while the game is paused. Hitting an enemy won’t trigger a death, but it will prevent the player from moving until the game is unpaused.
+                </td>
+            </tr>
+            <tr>
+                <td id="Key_Clip">Key Clip, Coin Clip</td>
+                <td id="Coin_Clip">3</td>
+                <td>
+                    Upon getting a key or coin that triggers a cutscene of a door opening, the player will be invincible for ten frames before the cutscene starts. It’s possible to take advantage of this invincibility to go through enemies, though it’s more of an exploit than a glitch.
+                </td>
+            </tr>
+            <tr>
+                <td id="Savewarp" style="top:-200px;">Savewarp</td>
+                <td>3,4</td>
+                <td>
+                    Disabling and enabling autosaving while not on a checkpoint will save the game. If a new room is entered without touching a checkpoint inside it, savewarping can allow reaching checkpoints early and skipping coin doors. In TWHG4, savewarping will keep all collectibles, while in TWHG3 they will respawn, unless the game is closed and reopened.
+                </td>
+            </tr>
+            <tr>
+                <td id="Level_Skip">Level Skip</td>
+                <td>3</td>
+                <td>
+                    Savewarping during a tip screen will load the next tip screen, skipping the entire level. Attempting to skip Level 5 in this way will result in a glitched tip screen for level 6.
+                </td>
+            </tr>
+            <tr>
+                <td id="Main_Menu_Storage">Main Menu Storage</td>
+                <td>3</td>
+                <td>
+                    By savewarping to an invalid checkpoint, the game will not be able to load properly, and the wall collision from the main menu will remain, as well as the player’s position and invincibility.
+                </td>
+            </tr>
+            <tr>
+                <td id="Invincibility_Storage">Invincibility Storage</td>
+                <td>3</td>
+                <td>
+                    After main menu storage, it’s possible to load the wall collisions properly, as long as a checkpoint and regular key are accessible. This can allow the player to remain invincible while playing the level, until a cutscene is activated.
+                </td>
+            </tr>
+            <tr>
+                <td id="Deathpause">Deathpause</td>
+                <td>4</td>
+                <td>
+                    Pausing during the death animation will let the animation continue and allow the player to respawn and start moving, while the game is still paused.
+                </td>
+            </tr>
+            <tr>
+                <td id="Cutscene_Storage">Cutscene Storage</td>
+                <td>4</td>
+                <td>
+                    Cutscenes will not be able to play while the game is paused, so after deathpausing the player can delay a cutscene indefinitely. Checkpoints will not work in this state.
+                </td>
+            </tr>
+            <tr>
+                <td id="Cutscene_Walk">Cutscene Walk</td>
+                <td>4</td>
+                <td>
+                    Pausing and unpausing during a cutscene will allow the player to move for the remainder of the cutscene.
+                </td>
+            </tr>
+            <tr>
+                <td id="Platform_Displacement">Platform Displacement</td>
+                <td>4</td>
+                <td>
+                    Doing a cutscene walk while on a platform, when there are also platforms in the room where the cutscene plays, will teleport the player to a new position.
+                </td>
+            </tr>
+            <tr>
+                <td id="Cutscene_Death">Cutscene Death</td>
+                <td>4</td>
+                <td>
+                    During a cutscene walk, the player is also able to die and interrupt the cutscene. Depending on circumstances the player will either respawn while the room is still in the cutscene state, respawn normally, or get stuck in a death loop.
+                </td>
+            </tr>
+            <tr>
+                <td id="Cutscene_Load">Cutscene Load, Centerwarp</td>
+                <td id="Centerwarp">4</td>
+                <td>
+                    Loading the game during a cutscene will spawn the player at the default position, the center of the screen. Depending on circumstances the player will either softlock, respawn normally, or be intangible. Loading into a different level will freeze the game.
+                </td>
+            </tr>
+            <tr>
+                <td id="Checkpoint_Misalignment">Checkpoint Misalignment</td>
+                <td>4</td>
+                <td>
+                    On certain resolutions larger than default size, some checkpoint hitboxes will extend slightly past a wall that normally covers it, making it possible to touch the checkpoints early and skip opening doors. One example is the final checkpoint in Level 4.
+                </td>
+            </tr>
+            <tr>
+                <td id="End_Screen_Storage">End Screen Storage</td>
+                <td>4</td>
+                <td>
+                    It’s possible to beat level 4 during a cutscene by getting a key after touching the final checkpoint. After this, starting or loading a new level will immediately trigger the level end screen. This can be applied to every level except 2, which will instead start with one of the results from a cutscene load.
+                </td>
+            </tr>
+        </table>
+        <br>
+        <p>
+            Lastly, while not a glitch, it’s possible to collect the paint in TWHG3 Level 4 after beating the level, as long as speech bubbles are enabled. This takes advantage of the invincibility after touching the final checkpoint and saves a lot of time over the intended path.
+        </p>
+
+        <h3 id="Minor_Glitches">Minor Glitches</h3>
+        <p>
+            This category lists glitches that still achieve some sort of goal, but are relatively inconsequential or specific to one or just a few areas. Some of them are a possible result from one of the major glitches.
+        </p>
+        <br>
+        <table class="glitch_table">
+            <tr>
+                <th>Glitch</th>
+                <th>Games</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td id="OOB_Softlock">OOB Softlock</td>
+                <td>1,2</td>
+                <td>
+                    After going inside walls using resize glitch, you can go off screen. Going too far will make it impossible to return.
+                </td>
+            </tr>
+            <tr>
+                <td id="Death_End">Death End</td>
+                <td>1,2</td>
+                <td>
+                    If the player dies on the same frame as beating a level, a death will occur upon starting the next level.
+                </td>
+            </tr>
+            <tr>
+                <td id="L9_Hidden_Coin">L9 Hidden Coin</td>
+                <td>1</td>
+                <td>
+                    In Level 9 there is an extra coin that is hidden behind a wall. It is possible to collect this coin by using a wall clip, however the coin makes no sound when collected. For more information see: <a target="_blank" href="https://youtu.be/SO5OLlt3z28?t=137">https://youtu.be/SO5OLlt3z28?t=137</a>.
+                </td>
+            </tr>
+            <tr>
+                <td id="L44_Pause">L44 Pause</td>
+                <td>2</td>
+                <td>
+                    In Level 44, the moving enemies were not programmed to stop moving while the game is paused, allowing them to go through the player. This also applies to the vertical enemies in Level 21 of TWHG2.1.
+                </td>
+            </tr>
+            <tr>
+                <td id="Glitched_Menu">Glitched Menu</td>
+                <td>3</td>
+                <td>
+                    During the tip screens before levels 3, 4 and 5, or after savewarping to an invalid checkpoint, the map in the pause menu will be unable to display the current checkpoint flashing, causing the menu options to stop working and the menu to attempt to automatically close when opened with a hotkey.
+                </td>
+            </tr>
+            <tr>
+                <td id="Pause_Buffering_Enemy_Delay">Pause Buffering Enemy Delay</td>
+                <td>3</td>
+                <td>
+                    If the game is paused by clicking the menu button, and then unpaused by pressing a hotkey, the player will move for one frame while the enemies remain in place. Doing this multiple times allows catching up with or getting away from enemies.
+                </td>
+            </tr>
+            <tr>
+                <td id="Death_Cancel">Death Cancel, Double Death</td>
+                <td id="Double_Death">3</td>
+                <td>
+                    Hitting an enemy on the same frame as collecting a key that activates the cutscene will play the death sound and prevent the player from moving, but it will only kill the player if it’s still touching an enemy after the cutscene ends.
+                </td>
+            </tr>
+            <tr>
+                <td id="Coin_Cutscene_Retrigger">Coin Cutscene Retrigger</td>
+                <td>3</td>
+                <td>
+                    If all coins in a level have been collected, a key cutscene is activated, and then immediately after the cutscene ends a checkpoint is touched that had coins on it, the coins will briefly reappear and the coin door cutscene will activate. Depending on circumstances, this can act like normal, give the player invincibility afterwards, or instead play the cutscene of the first door in the level opening and then softlock the player.
+                </td>
+            </tr>
+            <tr>
+                <td id="Cutscene_During_Level_Transition">Cutscene During Level Transition</td>
+                <td>3</td>
+                <td>
+                    If a cutscene is activated right before a new level is entered, the game will softlock on the tip screen. If the tip screen is advanced fast enough, the cutscene will play upon starting the new level, opening the corresponding door.
+                </td>
+            </tr>
+            <tr>
+                <td id="Coin_Preservation">Coin Preservation</td>
+                <td>3</td>
+                <td>
+                    Collecting coins in a room, and then dying and respawning in a different room which has a checkpoint with coins on it, will cause the coins with corresponding IDs to remain collected.
+                </td>
+            </tr>
+            <tr>
+                <td id="Cutscene_Respawn">Cutscene Respawn</td>
+                <td>3</td>
+                <td>
+                    Respawning in a different room on top of a key that activates a cutscene, which is possible in 3-A2 with a specific route, will prevent updating the wall collisions until the cutscene has played, allowing the player to move inside a wall and get stuck.
+                </td>
+            </tr>
+            <tr>
+                <td id="5-A1_Death_On_Cutscene_Trigger">5-A1 Death On Cutscene Trigger</td>
+                <td>3</td>
+                <td>
+                    Dying in the final room with a certain y position will immediately retrigger the long cutscene, making the player say his lines without being in the room.
+                </td>
+            </tr>
+            <tr>
+                <td id="Leaving_5-A1">Leaving 5-A1</td>
+                <td>3</td>
+                <td>
+                    Using invincibility storage, it’s possible to leave the final room after triggering the cutscene. Reloading the room after some time can trigger the second half of the cutscene, though the other enemies will be invisible.
+                </td>
+            </tr>
+            <tr>
+                <td id="Early_Option_Select">Early Option Select</td>
+                <td>4</td>
+                <td>
+                    Normally when loading or starting a new game, the player needs to finish his voicelines before the game starts. When the option is clicked twice, the lines will be cut off, and when the option is clicked quick enough upon opening the game, the lines will be skipped entirely.
+                </td>
+            </tr>
+            <tr>
+                <td id="First_Key_Glitch">First Key Glitch</td>
+                <td>4</td>
+                <td>
+                    Going to the main menu and starting a new game right after collecting the first key will cause the collision of the first door to be gone. Leaving and re-entering the room will make it reappear, causing a pseudo-softlock if the coins haven’t been collected.
+                </td>
+            </tr>
+            <tr>
+                <td id="Death_Storage">Death Storage</td>
+                <td>4</td>
+                <td>
+                    Loading the game or starting a new game during the death animation will load the player while the death animation is still going, canceling the loading animation and adding one death
+                </td>
+            </tr>
+            <tr>
+                <td id="Jumping_Over_Gaps">Jumping Over Gaps</td>
+                <td>4</td>
+                <td>
+                    While having the right alignment, it’s possible to go over a pit as long as one of the edges of the player remains on top of ground, since pit detection uses pixels that are slightly outside the player sprite.
+                </td>
+            </tr>
+            <tr>
+                <td id="Saving_in_Hardcore_Mode">Saving in Hardcore Mode</td>
+                <td>4</td>
+                <td>
+                    Despite checkpoints being deactivated in hardcore mode, savewarping will still work like normal.
+                </td>
+            </tr>
+            <tr>
+                <td id="Ice_WASD_Hyperspeed">Ice WASD Hyperspeed</td>
+                <td>4</td>
+                <td>
+                    Using WASD on version 1.1, getting a corner boost will make the player move faster than normal. If done on ice, this speed will be preserved until changing direction.
+                </td>
+            </tr>
+            <tr>
+                <td id="Drown_Meter_Storage">Drown Meter Storage</td>
+                <td>4</td>
+                <td>
+                    Moving the center of the player into water after being over a pit will cause the drown meter to resume from where it ended the last time, making the player drown faster.
+                </td>
+            </tr>
+            <tr>
+                <td id="Pit_Walk">Pit Walk</td>
+                <td>4</td>
+                <td>
+                    After riding a platform during a cutscene, it’s possible to be over a pit without dying. From there, moving orthogonally will let the player survive but moving diagonally will kill the player.
+                </td>
+            </tr>
+            <tr>
+                <td id="1-C1_Skip">1-C1 Skip</td>
+                <td>4</td>
+                <td>
+                    Since the edge of the screen doesn’t count as a pit, it’s possible to jump over a gap on the top left of 1-C1, skipping the key. The same trick is possible in 3-C4 though it’s not as useful.
+                </td>
+            </tr>
+            <tr>
+                <td id="Cutscene_Skip">Cutscene Skip</td>
+                <td>4</td>
+                <td>
+                    Activating a cutscene and dying before it starts will cancel the cutscene. If the cutscene key/coin was on a checkpoint, the key/coin will remain collected and cutscene will be skipped.
+                </td>
+            </tr>
+            <tr>
+                <td id="Out_Of_Bounds">Out Of Bounds</td>
+                <td>4</td>
+                <td>
+                    Using platform displacement to go through walls, or using some other glitches to exit 5-C4 through the bottom, it’s possible to enter a nonexistent room. The game will copy most of the properties of the previous room, the sprites will all be gone even after going back in bounds, and loading in any way will softlock the game.
+                </td>
+            </tr>
+            <tr>
+                <td id="Respawn_Displacement">Respawn Displacement</td>
+                <td>4</td>
+                <td>
+                    Activating a cutscene while dying, either by getting pushed by a platform during a pit death or using lavawalk, will respawn the player in the correct room, but without updating its coordinates. The respawn animation will not play and the cutscene will not be canceled, but collectables will reappear like normal.
+                </td>
+            </tr>
+            <tr>
+                <td id="3-C3/C4_Transition_Glitch">3-C3/C4 Transition Glitch</td>
+                <td>4</td>
+                <td>
+                    In level 3-C3 and C4, the position of the player upon transitioning between these rooms depends on the position of the platform. Using the water platform in C4, you can instantly transition up and down, making the player move downwards almost half the screen.
+                </td>
+            </tr>
+            <tr>
+                <td id="Clipping_Through_Walls">Clipping Through Walls</td>
+                <td>4</td>
+                <td>
+                    Using ice platforms that move next to walls, it’s possible to clip into them slightly, or in some cases all the way through.
+                </td>
+            </tr>
+            <tr>
+                <td id="Expand_Glitch">Expand Glitch</td>
+                <td>4</td>
+                <td>
+                    Triggering a death loop by performing a cutscene death with a pit, or by going out of bounds while dying, the death animation will continue and underflow the player’s hitbox, making it expand and continuously collect more and more coins.
+                </td>
+            </tr>
+            <tr>
+                <td id="Diamond_Duplication">Diamond Duplication</td>
+                <td>4</td>
+                <td>
+                    If a cutscene that takes place in a room with diamonds is triggered in a room without diamonds, and if a cutscene death is done to respawn while the room is in the cutscene state, the diamonds can be collected and saved, and the original diamonds will still be in the other room. Dying will set the coin count back to normal.
+                </td>
+            </tr>
+            <tr>
+                <td id="Lava_Walk">Lava Walk</td>
+                <td>4</td>
+                <td>
+                    Pausing and unpausing while dying in lava will allow the player to move during the death animation.
+                </td>
+            </tr>
+            <tr>
+                <td id="5-C2_Coin_Door_Cutscene_Cancel">5-C2 Coin Door Cutscene Cancel</td>
+                <td>4</td>
+                <td>
+                    If a diamond is collected last in the first half of level 5, the cutscene of the first coin door opening will not play.
+                </td>
+            </tr>
+            <tr>
+                <td id="5-C2_Coin_Door_Not_Closing">5-C2 Coin Door Not Closing</td>
+                <td>4</td>
+                <td>
+                    If the player dies after opening the first coin door in level 5 and respawns in C2, the coin door will still be open, and will only close if the room is re-entered.
+                </td>
+            </tr>
+        </table>
+
+        <h3 id="Useless_Glitches">Useless Glitches</h3>
+        <p>
+            This category lists glitches that don’t really serve any purpose, or are simply interesting observations.
+        </p>
+        <br>
+        <table class="glitch_table">
+            <tr>
+                <th>Glitch</th>
+                <th>Games</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td id="Music_Duplication">Music Duplication</td>
+                <td>2</td>
+                <td>
+                    Clicking begin on the very first screen will start the music, but the button will remain clickable for a short period, and the music can be started multiple times.
+                </td>
+            </tr>
+            <tr>
+                <td id="Eaten_End_of_Input">Eaten End of Input</td>
+                <td>3,4</td>
+                <td>
+                    Unfocusing the game window while holding a direction will pause the game and keep the direction held, even if the arrow key is not held. Could also happen with room transition lag.
+                </td>
+            </tr>
+            <tr>
+                <td id="Checkpoint_Reactivation">Checkpoint Reactivation</td>
+                <td>3</td>
+                <td>
+                    Going back and forth between rooms on a checkpoint in only a single frame will play the checkpoint noise, when the game is supposed to cancel it.
+                </td>
+            </tr>
+            <tr>
+                <td id="Level_End_Cancel">Level End Cancel</td>
+                <td>3</td>
+                <td>
+                    In Level 2 and 4, touching the final checkpoint for only one frame will not trigger the end of the level, and instead act like a regular checkpoint.
+                </td>
+            </tr>
+            <tr>
+                <td id="Door_Close_Delay">Door Close Delay</td>
+                <td>3</td>
+                <td>
+                    If a door is opened with a cutscene, and the player both dies and respawns in the room where the door is, before saving the key, the door will remain open. It will be closed again when the player leaves and enters the room. This situation is only possible after the cutscene during level transition glitch.
+                </td>
+            </tr>
+            <tr>
+                <td id="Invisible_Enemies">Invisible Enemies</td>
+                <td>3</td>
+                <td>
+                    Certain fast enemies that would be easy to clip through are backed up by unrendered enemies that for some reason don’t suffer the same hitbox glitch and can not be clipped through.
+                </td>
+            </tr>
+            <tr>
+                <td id="Double_Cutscene_Prevention">Double Cutscene Prevention</td>
+                <td>3</td>
+                <td>
+                    Upon activating a cutscene, it will be impossible to collect something that activates another cutscene, such as the final coin of a level.
+                </td>
+            </tr>
+            <tr>
+                <td id="Going_Inside_a_Door">Going Inside a Door</td>
+                <td>3</td>
+                <td>
+                    It’s possible to access 5-B1 without opening the door inside it, allowing the player to be inside the door, unable to move anywhere except for leaving the room.
+                </td>
+            </tr>
+            <tr>
+                <td id="5-A1_Wall_Preservation">5-A1 Wall Preservation</td>
+                <td>3</td>
+                <td>
+                    Attempting to leave the final room after touching the final checkpoint, or beating the room after main menu storage, will result in the submit score screen not updating the walls properly. 
+                </td>
+            </tr>
+            <tr>
+                <td id="Continue_After_Game_End">Continue After Game End</td>
+                <td>3</td>
+                <td>
+                    If the player goes from the submit score screen to the main menu and then tries to continue, the game will remain on the main menu and fail to take the player anywhere, effectively softlocking since other menu options stop working.
+                </td>
+            </tr>
+            <tr>
+                <td id="Respawn_Pause">Respawn Pause</td>
+                <td>4</td>
+                <td>
+                    Pausing during the respawn animation while holding a direction will cause the player to move in that direction for one frame as soon as the animation ends while the game is still paused.
+                </td>
+            </tr>
+            <tr>
+                <td id="Ice/Water_Room_Transition">Ice/Water Room Transition</td>
+                <td>4</td>
+                <td>
+                    Being in water or ice on the left/right edge of the screen and moving straight up/down into the top/bottom wall will move the player into the adjacent screen.
+                </td>
+            </tr>
+            <tr>
+                <td id="Platform_Wall_Bounce_Reset">Platform Wall Bounce Reset</td>
+                <td>4</td>
+                <td>
+                    While on some platforms, the player is assigned a greater speed than normal after bouncing off a wall, allowing it to continuously bounce off the same wall.
+                </td>
+            </tr>
+            <tr>
+                <td id="Instant_Wall_Bounce">Instant Wall Bounce</td>
+                <td>4</td>
+                <td>
+                    While moving both along and into a wall, going onto ice will bounce the player off the wall despite already touching it.
+                </td>
+            </tr>
+            <tr>
+                <td id="Ice_L+R_Jitter">Ice L+R Jitter</td>
+                <td>4</td>
+                <td>
+                    While holding both left and right and moving from normal ground onto ice, the left arrow key will take priority, but only while on ice. This results in the right and left arrow key rapidly switching priority.
+                </td>
+            </tr>
+            <tr>
+                <td id="Respawn_Inside_Wall">Respawn Inside Wall</td>
+                <td>4</td>
+                <td>
+                    In 2-C2, before the door is opened, you can drown on the checkpoint and respawn slightly inside the door.
+                </td>
+            </tr>
+            <tr>
+                <td id="Continuous_Wall_Bounce">Continuous Wall Bounce</td>
+                <td>4</td>
+                <td>
+                    Moving into a wall and a one way conveyor while on ice will make the bouncing sound repeatedly.
+                </td>
+            </tr>
+            <tr>
+                <td id="Platform_Desync">Platform Desync</td>
+                <td>4</td>
+                <td>
+                    Entering a room with platforms after performing a cutscene glitch will desynchronize some platform cycles, making them not match up to other platforms or enemies.
+                </td>
+            </tr>
+            <tr>
+                <td id="5-B3_Partial_Intangibility">5-B3 Partial Intangibility</td>
+                <td>4</td>
+                <td>
+                    After making the player intangible with cutscene load in 5-B3, the intangibility state will be canceled as soon as the player moves down onto the horizontal platforms.
+                </td>
+            </tr>
+        </table>
+
+        <h3 id="Graphical_Glitches">Graphical Glitches</h3>
+        <p>
+            This category lists glitches that are purely graphical, some of them occurring naturally and some of them resulting from other glitches.
+        </p>
+        <br>
+        <table class="glitch_table">
+            <tr>
+                <th>Glitch</th>
+                <th>Games</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td id="L26_Corner_Leak">L26 Corner Leak</td>
+                <td>2</td>
+                <td>
+                    Due to an incorrectly programmed border, the very bottom left corner of the starting checkpoint in level 26 will have the same color as the walls.
+                </td>
+            </tr>
+            <tr>
+                <td id="Multiple_Option_Highlight">Multiple Option Highlight</td>
+                <td>4</td>
+                <td>
+                    Moving the mouse over the options in the main menu quickly enough can keep them highlighted.
+                </td>
+            </tr>
+            <tr>
+                <td id="Partial_Highlight">Partial Highlight</td>
+                <td>4</td>
+                <td>
+                    Clicking walkthrough or snubbyland and leaving the game will cause the option to stop being highlighted, but the subtitle will still be there.
+                </td>
+            </tr>
+            <tr>
+                <td id="Drown_Meter_Upon_Load">Drown Meter Upon Load</td>
+                <td>4</td>
+                <td>
+                    In a room with water in the center, the player will have the drown meter once the loading animation finishes. It instantly fades away, but if the game is paused it will remain visible.
+                </td>
+            </tr>
+            <tr>
+                <td id="Coins_Reappearing">Coins Reappearing</td>
+                <td>4</td>
+                <td>
+                    Activating a cutscene and entering a new room before it starts will cause coins to reappear and instantly fade away. Noticeable in many places with cutscene storage.
+                </td>
+            </tr>
+            <tr>
+                <td id="Glitched_HUD">Glitched HUD, Player, Coin Door</td>
+                <td>4</td>
+                <td>
+                    Causing a softlock with savewarping or cutscene load will cause the head-up display (HUD) to display debug values, replacing all numbers with 8’s. The player, along with being in the default position in the center of the screen, will play the loading and respawning animations on loop while also quickly cycling through every paint. The coin door, similarly to the HUD, will display “8888 left”. If a cutscene load does not result in a softlock, it will trigger glitched player and coin door but not glitched HUD. The player animations will only play once, and can move to the player’s actual position.
+                </td>
+            </tr>
+            <tr>
+                <td id="1-C1_Conveyor">1-C1 Conveyor</td>
+                <td>4</td>
+                <td>
+                    When special effects are disabled, a certain conveyor in 1-C1 is rendered one tile to the left of where it should be. It still functions as though it were in its true position.
+                </td>
+            </tr>
+            <tr>
+                <td id="2-C2_Conveyor">2-C2 Conveyor</td>
+                <td>4</td>
+                <td>
+                    The one-way conveyor at the top of 2-C2 will have an animation playing even if special effects are disabled.
+                </td>
+            </tr>
+            <tr>
+                <td id="Summed_Death_Distribution">Summed Death Distribution</td>
+                <td>4</td>
+                <td>
+                    On a level end screen, the map showing the deaths can sometimes include the deaths of multiple levels.
+                </td>
+            </tr>
+            <tr>
+                <td id="Empty_Start/Finish">Empty Start/Finish</td>
+                <td>4</td>
+                <td>
+                    Performing cutscene storage in hardcore mode can make the first and final checkpoints disappear similarly to all the other checkpoints.
+                </td>
+            </tr>
+            <tr>
+                <td id="4-D2_Glitched_Map">4-D2 Glitched Map</td>
+                <td>4</td>
+                <td>
+                    The 4-D2 checkpoint icon on the map screen is incorrectly programmed, making the icon appear gray when it should be flashing, and causing glitched HUD specifically for the map screen.
+                </td>
+            </tr>
+            <tr>
+                <td id="Water_on_Ice">Water on Ice</td>
+                <td>4</td>
+                <td>
+                    When water is next to ice, a water sprite is layered on top of an ice sprite to make the special effect look normal. However, for some water tiles this is not the case, e.g. 4-C3.
+                </td>
+            </tr>
+            <tr>
+                <td id="Lava_Special_Effects_Glitch">Lava Special Effects Glitch</td>
+                <td>4</td>
+                <td>
+                    After performing cutscene storage or cutscene load, the animation for the lava tiles will rapidly change, even if special effects are disabled.
+                </td>
+            </tr>
+            <tr>
+                <td id="Negative_Coin_Requirement">Negative Coin Requirement</td>
+                <td>4</td>
+                <td>
+                    After performing diamond duplication and getting all of the coins, the coin door will still be closed and show “-,500 left” since the minus is treated as a digit and there’s a comma separating the thousands digit from the other three digits.
+                </td>
+            </tr>
+        </table>
+
+    </body>
+</html>

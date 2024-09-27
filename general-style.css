@@ -34,6 +34,7 @@ h3 {
     font-size: 1.4em;
     margin-top: 16px;
     margin-bottom: 4px;
+    scroll-margin-top: 15px;
 }
 
 h4 {
@@ -85,4 +86,44 @@ iframe {
     text-align: center;
     margin-top: 15px;
     margin-bottom: 10px;
+}
+
+/* GENERIC TABLE STYLE */
+/* (also appears in leaderboards.css) */
+table {
+    border-collapse: collapse;
+    border-style: hidden;
+    max-width: min(100%,max(100%,500px));
+}
+
+th {
+    font-weight: bold;
+    text-align: left;
+}
+
+table.glitch_table th:nth-child(1) {
+    width: 150px;
+}
+
+table.glitch_table th:nth-child(2) {
+    width: auto;
+}
+
+table.glitch_table th:nth-child(3) {
+    width: 700px;
+}
+
+table td, table th {
+    border: 1px solid #aaaaaa;
+    padding: 10px 20px 10px 10px;
+    text-align: left;
+    scroll-margin-top: 10px;
+}
+
+.contents_table {
+    border: 1px solid #bbbbbb;
+    margin-top: 15px;
+    padding: 10px 14px 6px 10px;
+    width: auto;
+    display: inline-block;
 }

@@ -38,8 +38,8 @@ const SUBHEADER_TO_ATTRIBUTE = {
 };
 
 const TWHG2_BONUS_LEVEL_NUMBERS = [10, 18, 20, 21, 22, 25, 29, 32, 39, 46];
-const GAMES = ["TWHG1", "TWHG2"];
-const LEVELS = [
+const GAME_NAMES = ["TWHG1", "TWHG2"];
+const LEVEL_NAMES = [
     Array.from(Array(30), (_, i) => "Level " + (i + 1)),
     Array.from(Array(50), (_, i) => "Level " + (i + 1)).concat(TWHG2_BONUS_LEVEL_NUMBERS.map(i => "2.1 Level " + i)).concat([1,2,3,4].map(i => "Tutorial Level " + i)),
 ];
@@ -247,7 +247,6 @@ function getRouteTitle(route) {
 }
 
 function getRouteResolutionInfo(route) {
-    // var res = route.resolutions == ""? "Unknown" : route.resolutions;
     var res = route.resolutions.possible;
     if (res == "") {
         return null;
@@ -342,6 +341,31 @@ function createHorizontalRouteList(routes, listContainer) {
     }
 }
 
+function setRoutes() {
+    createHorizontalRouteList(allRoutes[gameId][levelId], document.getElementById("route-list"));
+}
+
+//////////////
+// SOB MODE //
+//////////////
+var sobtoggle = document.getElementById("sobtoggle");
+var sobMode = false;
+sobtoggle.onclick = function() {
+    sobMode = sobtoggle.checked;
+}
+
+////////////
+// POP UP //
+////////////
+
+function openPopup() {
+    document.getElementById("popup-div").style.visibility = "visible";
+}
+
+function closePopup() {
+    document.getElementById("popup-div").style.visibility = "hidden";
+}
+
 /////////////
 // HEADERS //
 /////////////
@@ -349,55 +373,118 @@ function createHorizontalRouteList(routes, listContainer) {
 // CHANGE GAME
 document.getElementById("game-minus").onclick = function(event) {
     gameId--;
-    while (gameId < 0) gameId += GAMES.length;
-    setGame();
+    while (gameId < 0) gameId += GAME_NAMES.length;
+    setGame(gameId);
+    setLevel(0);
+    setURLGameAndLevel();
+    setRoutes();
 }
 
 document.getElementById("game-plus").onclick = function(event) {
     gameId++;
-    while (gameId >= GAMES.length) gameId -= GAMES.length;
-    setGame();
+    while (gameId >= GAME_NAMES.length) gameId -= GAME_NAMES.length;
+    setGame(gameId);
+    setLevel(0);
+    setURLGameAndLevel();
+    setRoutes();
 }
 
-function setGame() {
-    document.getElementById("game-header").textContent = GAMES[gameId];
-    levelId = 0;
-    setLevel();
+function setGame(game) {
+    gameId = game;
+    document.getElementById("game-header").textContent = GAME_NAMES[gameId];
 }
 
 // CHANGE LEVEL
 document.getElementById("level-minus").onclick = function(event) {
     var shiftAmount = event.shiftKey? 10 : 1;
     levelId -= shiftAmount;
-    while (levelId < 0) levelId += LEVELS[gameId].length;
-    setLevel();
+    while (levelId < 0) levelId += LEVEL_NAMES[gameId].length;
+    setLevel(levelId);
+    setURLGameAndLevel();
+    setRoutes();
 }
 
 document.getElementById("level-plus").onclick = function(event) {
     var shiftAmount = event.shiftKey? 10 : 1;
     levelId += shiftAmount;
-    while (levelId >= LEVELS[gameId].length) levelId -= LEVELS[gameId].length;
-    setLevel();
+    while (levelId >= LEVEL_NAMES[gameId].length) levelId -= LEVEL_NAMES[gameId].length;
+    setLevel(levelId);
+    setURLGameAndLevel();
+    setRoutes();
 }
 
-function setLevel() {
-    document.getElementById("level-header").textContent = LEVELS[gameId][levelId];
+function setLevel(level) {
+    levelId = level;
+    document.getElementById("level-header").textContent = LEVEL_NAMES[gameId][levelId];
     removeAllChildren(document.getElementById("route-list"));
-    createHorizontalRouteList(allRoutes[gameId][levelId], document.getElementById("route-list"));
 }
 
 
+////////////////
+// URL PARAMS //
+////////////////
 
+const GAME_PARAMS = ["1", "2"];
+const LEVEL_PARAMS = [
+    Array.from(Array(30), (_, i) => String(i + 1)),
+    Array.from(Array(50), (_, i) => String(i + 1)).concat(TWHG2_BONUS_LEVEL_NUMBERS.map(i => "b" + i)).concat([1,2,3,4].map(i => "t" + i))
+];
 
+// GET PARAMS
+function getGameFromParam(gameParam) {
+    gameId = 0;
+    if (GAME_PARAMS.includes(gameParam)) {
+        gameId = GAME_PARAMS.indexOf(gameParam);
+    }
+    return gameId;
+}
+
+function getLevelFromParam(levelParam) {
+    levelId = 0;
+    if (LEVEL_PARAMS[gameId].includes(levelParam)) {
+        levelId = LEVEL_PARAMS[gameId].indexOf(levelParam);
+    }
+    return levelId;
+}
+
+// SET PARAMS
+function setURL(window, url) {
+    window.history.replaceState(null, "", url);
+}
+
+function setURLSearch(window, search) {
+    setURL(window, window.location.origin + window.location.pathname + search);
+}
+
+function setURLSearchAndParent(search) {
+    setURLSearch(window.top, search);
+}
+
+function setURLParams(params) {
+    setURLSearchAndParent("?" + Object.entries(params).map(entry => entry[0] + "=" + entry[1]).join("&"));
+}
+
+function setURLGameAndLevel() {
+    setURLParams({game: GAME_PARAMS[gameId], level: LEVEL_PARAMS[gameId][levelId]})
+}
 
 //////////
 // MAIN //
 //////////
-var gameId = 0;
-var levelId = 0;
+
+// Get gameId and levelId from URL params
+var params = new URLSearchParams(window.top.location.search);
+var gameId = getGameFromParam(params.get("game"))
+var levelId = getLevelFromParam(params.get("level"))
+
+// Set HTML objects and URL with current game and level
+setGame(gameId);
+setLevel(levelId);
+setURLGameAndLevel();
+
+// Make API request for routes and then set routes on the screen
 var allRoutes;
-// var selectedId = 0;
-var urls = GAMES.map(game => createURL(SHEETS_API, [SHEET_ID, "values", game], {key: API_KEY}));
+var urls = GAME_NAMES.map(game => createURL(SHEETS_API, [SHEET_ID, "values", game], {key: API_KEY}));
 var requests = urls.map(url => getFetchPromise(url));
 Promise.all(requests).then(jsons => {
     allRoutes = jsons.map(json => {
@@ -408,5 +495,5 @@ Promise.all(requests).then(jsons => {
         var levels = sortRoutesByLevel(routes);
         return levels;
     });
-    setGame();
+    setRoutes();
 });
