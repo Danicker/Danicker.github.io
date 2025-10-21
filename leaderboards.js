@@ -1739,7 +1739,10 @@ async function getMultipagePromise(url, pages, updateCallback) {
         updateCallback(json.data.length);
         for (const link of json.pagination.links) {
             if (link.rel == "next") {
-                return getMultipagePromise(link.uri, pages, updateCallback);
+                return getMultipagePromise(link.uri.replace("http://", "https://"), pages, updateCallback);
+                // the replace() above is needed to convert the links provided by SRC from http links to https links
+                // the requests fail if http, not sure why but get the following CORS error:
+                // "Access to fetch at 'http://www.speedrun.com/api/v1/runs?game=4d7zpl67&embed=players&max=200&offset=200' from origin 'http://twhg.info' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource."
             }
         }
         return pages;
