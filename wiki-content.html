@@ -67,7 +67,7 @@
                 <td id="Invisible_Door">Invisible Door</td>
                 <td>3</td>
                 <td>
-                    Continuing during a level may cause the collision of a previously opened door to reappear, trapping the player. Seemingly rare and exclusive to the 1.0 version.
+                    On the 1.0 version, quitting the game and continuing in the middle of a level can cause (the collision of) a previously opened door to reappear, which may trap the player. Fixed on the 1.1 version.
                 </td>
             </tr>
             <tr>
@@ -138,9 +138,9 @@
             </tr>
             <tr>
                 <td id="Right_Click_Play">Right-Click Play/ Ctrl+Enter</td>
-                <td>1,(2)</td>
+                <td>1,2</td>
                 <td>
-                    Using this debug feature of flash, TWHG1 will act like an animation and quickly skip to the end screen. In TWHG2, it’s possible to skip levels, but it becomes impossible to beat any levels after doing this.
+                    Using this debug feature of flash, the game will act like an animation and quickly skip through levels. The level counter remains the same, so you can beat a new level with the coin requirement of the old level. In TWHG1, it's possible to skip every level, and get to the submit score screen without starting the game. In TWHG2, it's possible to skip to the final level, and then beat it with fewer coins than usual, which beats the game.
                 </td>
             </tr>
             <tr>
@@ -182,7 +182,7 @@
                 <td id="Main_Menu_Storage">Main Menu Storage</td>
                 <td>3</td>
                 <td>
-                    By savewarping to an invalid checkpoint, the game will not be able to load properly, and the wall collision from the main menu will remain, as well as the player’s position and invincibility.
+                    By savewarping to an invalid checkpoint, the game will not be able to load properly, and the wall collision from the main menu will remain, as well as the player’s position and invincibility. This also makes it possible to move the player while the game is paused.
                 </td>
             </tr>
             <tr>
@@ -269,7 +269,7 @@
                 <td id="OOB_Softlock">OOB Softlock</td>
                 <td>1,2</td>
                 <td>
-                    After going inside walls using <a href="#Resize_Glitch">resize glitch</a>, you can go off screen. Going too far will make it impossible to return.
+                    After going inside walls using <a href="#Resize_Glitch">resize glitch</a>, you can go off screen. You can then only return by doing resize glitch again.
                 </td>
             </tr>
             <tr>
@@ -402,7 +402,7 @@
                 <td id="Drown_Meter_Storage">Drown Meter Storage</td>
                 <td>4</td>
                 <td>
-                    Moving the center of the player into water after being over a pit will cause the drown meter to resume from where it ended the last time, making the player drown faster.
+                    With precise positioning, moving the center of the player into water after being over a pit will cause the drown meter to resume from where it ended the last time, making the player drown faster.
                 </td>
             </tr>
             <tr>
@@ -594,10 +594,10 @@
                 </td>
             </tr>
             <tr>
-                <td id="Respawn_Pause">Respawn Pause</td>
+                <td id="Respawn_Animation_Delay">Respawn Animation Delay</td>
                 <td>4</td>
                 <td>
-                    Pausing during the respawn animation while holding a direction will cause the player to move in that direction for one frame as soon as the animation ends while the game is still paused.
+                    The respawn animation lags one frame behind the player’s actual position. This is noticeable by pausing, dying, or switching areas.
                 </td>
             </tr>
             <tr>
