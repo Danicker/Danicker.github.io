@@ -2537,7 +2537,7 @@ for (var level in IDS.levels.whg1) {
     if (levelNumber == 1) {
         frames = 43;
     } else if (levelNumber % 5 == 0) {
-        frames = 45;
+        frames = 44; // 45 if using 1-frame timing per tip
     } else {
         frames = 44;
     }
@@ -2577,7 +2577,7 @@ for (var level in IDS.levels.whgext) {
     if (levelNumber == 1) {
         frames = 43;
     } else if (levelNumber % 5 == 0) {
-        frames = 45;
+        frames = 44; // 45 if using 1-frame timing per tip
     } else {
         frames = 44;
     }
