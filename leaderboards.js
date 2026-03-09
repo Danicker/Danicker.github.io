@@ -2022,8 +2022,8 @@ var checkboxes = {
         "100%": newCheckbox("100%"),
         "Tutorial (whg2)": newCheckbox("Tutorial (whg2)"),
         "HTML5": newCheckbox("HTML5 (whg1)"),
-        "Any% Glitched": newCheckbox("Any% Glitched"),
-        "100% Glitched": newCheckbox("100% Glitched"),
+        "Any% Glitched": newCheckbox("Any% (glitches allowed)"),
+        "100% Glitched": newCheckbox("100% (glitches allowed)"),
         // "Tutorial Glitched (whg2)": newCheckbox("Tutorial Glitched (whg2)") REMOVED
         // "Duofecta 1&2": newCheckbox("Duofecta 1&2"),
         // "Duofecta 3&4": newCheckbox("Duofecta 3&4"),
@@ -2298,16 +2298,16 @@ function initSelectors() {
         },
         whg3: {
             "": {
-                "Any%": ["Any%", "Any% Glitched"],
-                "100%": ["100%", "100% Glitched"]
+                "Any% Glitchless": ["Any%"],
+                "100% Glitchless": ["100%", "100% Glitched"],
+                "Any%": ["Any% Glitched"]
             }
         },
         whg4: {
             "": {
                 "Any% Glitchless": ["Any%"],
-                "100% Glitchless": ["100%"],
-                "Any%": ["Any% Glitched"],
-                "100%": ["100% Glitched"]
+                "100% Glitchless": ["100%", "100% Glitched"],
+                "Any%": ["Any% Glitched"]
             }
         },
         multiwhg: {
@@ -2503,8 +2503,9 @@ var TRANSITION_UNITS = {
     },
     whg3: {
         "": {
-            "Any%": 0,
-            "100%": 0
+            "Any% Glitchless": 0,
+            "100% Glitchless": 0,
+            "Any%": 0
         }
     },
     whg4: {
