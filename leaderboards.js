@@ -2354,8 +2354,9 @@ function initSelectors() {
     }
     for (var level in IDS.levels.whg3) {
         categoryNames.whg3[level] = {
-            "Any%": ["Any%", "Any% Glitched"],
-            "100%": ["100%", "100% Glitched"]
+            "Any% Glitchless": ["Any%"],
+            "100% Glitchless": ["100%", "100% Glitched"],
+            "Any%": ["Any% Glitched"]
         }
     }
     for (var level in IDS.levels.whg4) {
@@ -2562,8 +2563,9 @@ for (var level in IDS.levels.whg2) {
 }
 for (var level in IDS.levels.whg3) {
     TRANSITION_UNITS.whg3[level] = {
-        "Any%": 0,
-        "100%": 0
+        "Any% Glitchless": 0,
+        "100% Glitchless": 0,
+        "Any%": 0
     }
 }
 for (var level in IDS.levels.whg4) {
