@@ -2017,6 +2017,10 @@ var checkboxes = {
         "full-game": newCheckbox("full-game"),
         levels: newCheckbox("levels")
     },
+    platform: {
+        "Flash": newCheckbox("Flash"),
+        "HTML5": newCheckbox("HTML5")
+    },
     categories: {
         "Any%": newCheckbox("Any%"),
         "100%": newCheckbox("100%"),
@@ -2056,28 +2060,52 @@ function initSelectors() {
 
     // Category Scope Selector
     addNodeToDocument(categoryScopeSelector, "leaderboard-type-selector-container");
-    setSelectorOptions(categoryScopeSelector, ["Single Category", "Multiple Categories"]);
-    categoryScopeSelector.onchange = () => {
+    setSelectorOptions(categoryScopeSelector, ["Single Category", "Multiple Categories", "All Runs", "Single Game"]);
+    categoryScopeSelector.onchange = (cascade=true) => {
+        document.getElementById("selection-container").hidden = true;
+        document.getElementById("multi-category-div-inner").hidden = true;
+        document.getElementById("checkboxes-games-div").hidden = true;
+        document.getElementById("checkboxes-scope-div").hidden = true;
+        document.getElementById("checkboxes-platform-div").hidden = true;
+        document.getElementById("checkboxes-categories-main-div").hidden = true;
+        document.getElementById("checkboxes-categories-glitched-div").hidden = true;
+        scopeSelector.hidden = true;
+        levelSelector.hidden = true;
+        categorySelector.hidden = true;
+        variableSelectors.forEach(selector => selector.style.display = "none");
         if (categoryScopeSelector.value == "Single Category") {
-            document.getElementById("single-category-div").hidden = false;
-            document.getElementById("multi-category-div").hidden = true;
-            gameSelector.onchange();
+            document.getElementById("category-selection-heading").textContent = "Category";
+            scopeSelector.hidden = false;
+            levelSelector.hidden = false;
+            categorySelector.hidden = false;
+            variableSelectors.forEach(selector => selector.style.display = "inline");
+            document.getElementById("selection-container").hidden = false;
+            // gameSelector.hidden = false;
+            if (cascade) {
+                gameSelector.onchange();
+            }
         } else if (categoryScopeSelector.value == "Multiple Categories") {
-            document.getElementById("single-category-div").hidden = true;
-            document.getElementById("multi-category-div").hidden = false;
+            document.getElementById("category-selection-heading").textContent = "Category Group";
+            document.getElementById("checkboxes-games-div").hidden = false;
+            document.getElementById("checkboxes-scope-div").hidden = false;
+            document.getElementById("checkboxes-categories-main-div").hidden = false;
+            document.getElementById("checkboxes-categories-glitched-div").hidden = false;
+            document.getElementById("multi-category-div-inner").hidden = false;
+        } else if (categoryScopeSelector.value == "All Runs") {
+            document.getElementById("category-selection-heading").textContent = "";
+        } else if (categoryScopeSelector.value == "Single Game") {
+            document.getElementById("category-selection-heading").textContent = "Game";
+            document.getElementById("selection-container").hidden = false;
+            document.getElementById("checkboxes-scope-div").hidden = false;
+            document.getElementById("checkboxes-platform-div").hidden = false;
+            document.getElementById("multi-category-div-inner").hidden = false;
         }
     }
     categoryScopeSelector.value = "Multiple Categories";
     attemptSetSelectorFromParams(categoryScopeSelector, 'categoryscope', params);
 
     // Set Category Scope
-    if (categoryScopeSelector.value == "Single Category") {
-        document.getElementById("single-category-div").hidden = false;
-        document.getElementById("multi-category-div").hidden = true;
-    } else if (categoryScopeSelector.value == "Multiple Categories") {
-        document.getElementById("single-category-div").hidden = true;
-        document.getElementById("multi-category-div").hidden = false;
-    }
+    categoryScopeSelector.onchange(false);
 
     // SINGLE CATEGORY
     // Game Selector
@@ -2133,12 +2161,11 @@ function initSelectors() {
                 levelSelector.value = oldValue;
             }
             levelSelector.style.display = "inline";
-            levelSelector.onchange();
         } else {
             setSelectorOptions(levelSelector, []);
             levelSelector.style.display = "none";
-            levelSelector.onchange();
         }
+        levelSelector.onchange();
     }
     attemptSetSelectorFromParams(levelSelector, 'level', params);
 
@@ -2181,11 +2208,13 @@ function initSelectors() {
         for (const variableSelector of variableSelectors) {
             variableSelector.style.display = "none";
         }
-        for (const i in variableSelectors) {
-            if (variableApplies(IDS.subcategories[i], gameSelector.value, levelSelector.value, categorySelector.value)) {
-                variableSelectors[i].style.display = "inline";
+        if (categoryScopeSelector.value == "Single Category") {
+            for (const i in variableSelectors) {
+                if (variableApplies(IDS.subcategories[i], gameSelector.value, levelSelector.value, categorySelector.value)) {
+                    variableSelectors[i].style.display = "inline";
+                }
+                attemptSetSelectorFromParams(variableSelectors[i], "subcat" + i, params);
             }
-            attemptSetSelectorFromParams(variableSelectors[i], "subcat" + i, params);
         }
         updateDateSelectors();
     }
@@ -2378,6 +2407,11 @@ function initSelectors() {
         addNodeToDocument(node, "checkboxes-scope");
         attemptSetCheckboxFromParams(node, name, params);
     }
+    checkboxes.platform.Flash.checkbox.checked = true;
+    for (const [name, node] of Object.entries(checkboxes.platform)) {
+        addNodeToDocument(node, "checkboxes-platform");
+        attemptSetCheckboxFromParams(node, name, params);
+    }
     checkboxes.categories["Any%"].checkbox.checked = true;
     for (const [name, node] of Object.entries(checkboxes.categories)) {
         if (["Any%", "100%", "Tutorial (whg2)", "HTML5"].includes(name)) {
@@ -2402,6 +2436,7 @@ function initSelectors() {
 
     // Date Selectors
     function updateDateSelectors() {
+        console.log("updateDateSelectors()")
         if (document.getElementById("date-start").value == "") {
             document.getElementById("date-start").value = "2000-01-01";
             if (params.has("date-start")) {
@@ -2426,6 +2461,10 @@ function initSelectors() {
     }
     document.getElementById("refresh-button").onclick = function() {
         window.parent.location.assign(getLink());
+    }
+    document.getElementById("recap-button").onclick = function() {
+        console.log("generating recap table...");
+        copyTextToClipboard(getRecapTable());
     }
 
 }
@@ -2455,6 +2494,8 @@ function getLink() {
         for (const [name, node] of Object.entries(checkboxes.categories)) {
             params[name] = node.checkbox.checked;
         }
+    } else if (categoryScopeSelector.value == "All Runs") {
+        // None
     }
     for (const [name, node] of Object.entries(checkboxes.status)) {
         params[name] = node.checkbox.checked;
@@ -2545,7 +2586,7 @@ for (var level in IDS.levels.whg1) {
     }
     TRANSITION_UNITS.whg1[level] = {
         "Flash": frames * 4,
-        "HTML5": 4 * 120 // TEMP: 4 seconds per level
+        "HTML5": 4 * 120 // 4 seconds per level
     };
 }
 for (var level in IDS.levels.whg2) {
@@ -2629,6 +2670,47 @@ function getStatusFilter(statuses) {
         return statuses.includes(run.status.status);
     }
 }
+// Scopes
+function scopeFilterIL(run) {
+    return run.level != null;
+}
+function scopeFilterFG(run) {
+    return run.level == null;
+}
+function getScopeFilter(scopes) {
+    var filters = [];
+    if (scopes.includes("full-game")) {
+        filters.push(scopeFilterFG);
+    }
+    if (scopes.includes("levels")) {
+        filters.push(scopeFilterIL);
+    }
+    return getFilterUnion(filters);
+}
+// Platforms
+function platformFilterHTML5(run) {
+    if (run.category == "xk9740xd") {return true;} // HTML IL category
+    for (const [key, value] of Object.entries(run.values)) { // HTML FG variable
+        if (key == "r8rgvown" && value == "klr532j1") {
+            return true;
+        }
+    }
+    return false;
+}
+function platformFilterFlash(run) {
+    return !platformFilterHTML5(run);
+}
+function getPlatformFilter(platforms) {
+    var filters = [];
+    if (platforms.includes("Flash")) {
+        filters.push(platformFilterFlash);
+    }
+    if (platforms.includes("HTML5")) {
+        filters.push(platformFilterHTML5);
+    }
+    return getFilterUnion(filters);
+}
+// Dates
 function getRunsOnOrBeforeDateFilter(date) {
     return function(run) {
         return run.date <= date;
@@ -2637,6 +2719,26 @@ function getRunsOnOrBeforeDateFilter(date) {
 function getRunsOnOrAfterDateFilter(date) {
     return function(run) {
         return run.date >= date;
+    }
+}
+function getRunsOnOrBeforeRunFilter(run1) {
+    return function(run2) {
+        if (run2.date > run1.date) {
+            return false;
+        }
+        if (run2.date == run1.date && playersIdentifier(run1) == playersIdentifier(run2) && run2.times.primary_t < run1.times.primary_t) {
+            return false;
+        }
+        if (run2.submitted > run1.submitted) {
+            return false;
+        }
+        return true;
+    }
+}
+// Players
+function getPlayersFilter(players) {
+    return function(run) {
+        return getPlayersToString(run.players.data) == getPlayersToString(players);
     }
 }
 
@@ -2740,13 +2842,17 @@ function placesCompare(item1, item2) {
 
 var placesComparison = getComparison(placesCompare);
 var medalCountComparison = getComparison(medalCountCompare);
-var dateComparison = getComparison(getCompare(run => run.date))
+var dateComparison = getComparison(getCompare(run => run.date));
+var dateSortFunction = (run1, run2) => (run1.date < run2.date? -1 : run1.date > run2.date? 1 : 0)
 
 /////////////////
 // IDENTIFIERS //
 /////////////////
 playerIdentifier = function(run) {
     return getPlayerDisplayName(run.players.data[0]);
+}
+playersIdentifier = function(run) {
+    return getPlayersToString(run.players.data);
 }
 
 /////////////
@@ -2958,6 +3064,56 @@ function getGameNameFromId(id) {
     return getKeyFromValue(IDS.games, id);
 }
 
+function getCategoryNameFromId(id) {
+    for (const categorySet of Object.values(IDS.categories)) {
+        for (const categoryDict of Object.values(categorySet)) {
+            var key = getKeyFromValue(categoryDict, id);
+            if (key != undefined) {
+                return key;
+            }
+        }
+    }
+    return undefined;
+}
+
+function getVariableFromKey(key) {
+    var allVariables = IDS.subcategories.concat(IDS.variables);
+    for (const variable of allVariables) {
+        var x = Object.entries(variable.choices).find(choice => choice[1].key == key);
+        if (x != undefined) {
+            return variable;
+        }
+    }
+    return undefined;
+}
+
+function getVariableNameFromKey(key) {
+    var variable = getVariableFromKey(key);
+    if (variable) {
+        return variable.name;
+    }
+    return undefined;
+}
+
+function getChoiceNameFromValue(value) {
+    var allVariables = IDS.subcategories.concat(IDS.variables);
+    for (const variable of allVariables) {
+        var x = Object.entries(variable.choices).find(choice => choice[1].value == value);
+        if (x != undefined) {
+            return x[0]; // name of choice
+        }
+    }
+    return undefined;
+}
+
+function convertValuesToString(values) {
+    return Object.entries(values).map(entry => [getVariableNameFromKey(entry[0]), getChoiceNameFromValue(entry[1])].join(": ")).join(", ");
+}
+
+function convertValuesToShortString(values) {
+    return Object.entries(values).map(entry => getChoiceNameFromValue(entry[1])).join(", ");
+}
+
 var NEW_COLUMNS = {};
 NEW_COLUMNS.place = {
     header: "Place",
@@ -3077,6 +3233,107 @@ NEW_COLUMNS.date = {
     header: "Date",
     text: entry => formatDate(entry.item.runs[0].date),
     tooltip: entry => writeDaysAgo(entry.item.runs[0].date)
+}
+
+var RECAP_COLUMNS = {};
+RECAP_COLUMNS.player = {
+    header: "Player(s)",
+    text: (run, runs) => getPlayersToString(run.players.data)
+}
+RECAP_COLUMNS.game = {
+    header: "Game",
+    text: (run, runs) => getGameNameFromId(run.game)
+}
+RECAP_COLUMNS.level = {
+    header: "Level",
+    text: function(run, runs) {
+        level = getLevelNameFromId(run.level);
+        return level == undefined? "Full Game" : level
+    }
+}
+RECAP_COLUMNS.category = {
+    header: "Category",
+    text: (run, runs) => getCategoryNameFromId(run.category)
+}
+function convertValuesToShortString(values) {
+    return Object.entries(values).map(entry => getChoiceNameFromValue(entry[1])).join(", ");
+}
+RECAP_COLUMNS.values = {
+    header: "Variables",
+    text: (run, runs) => convertValuesToShortString(run.values)
+}
+RECAP_COLUMNS.time = {
+    header: "Time",
+    text: (run, runs) => "'" + formatTimeFromSecondsToDecimal(run.times.primary_t)
+}
+RECAP_COLUMNS.date = {
+    header: "Date",
+    text: (run, runs) => run.date
+}
+RECAP_COLUMNS.src = {
+    header: "SRC Link",
+    text: (run, runs) => run.weblink
+}
+RECAP_COLUMNS.yt = {
+    header: "YT Link(s)",
+    text: function(run, runs) {
+        if (!run.videos) {
+            return "";
+        }
+        return run.videos.links.map(link => link.uri).join(",");
+    }
+}
+RECAP_COLUMNS.status = {
+    header: "Status",
+    text: (run, runs) => run.status.status
+}
+RECAP_COLUMNS.initialPersonalRank = {
+    header: "IPR",
+    text: (run, runs) => getLeaderboardRank(run, runs, true, true)
+}
+RECAP_COLUMNS.currentPB = {
+    header: "Current PB",
+    text: (run, runs) => getLeaderboardRank(run, runs, true, false) == 1
+}
+RECAP_COLUMNS.initialRank = {
+    header: "Initial Rank",
+    text: (run, runs) => getLeaderboardRank(run, runs, false, true)
+}
+RECAP_COLUMNS.currentRank = {
+    header: "Current Rank",
+    text: (run, runs) => getLeaderboardRank(run, runs, false, false)
+}
+RECAP_COLUMNS.initialTie = {
+    header: "Initial Tie",
+    text: (run, runs) => runHasTie(run, runs, true)
+}
+RECAP_COLUMNS.currentTie = {
+    header: "Current Tie",
+    text: (run, runs) => runHasTie(run, runs, false)
+}
+RECAP_COLUMNS.initialPlace = {
+    header: "Initial",
+    text: function(run, runs) {
+        const isTie = runHasTie(run, runs, true);
+        const rank = getLeaderboardRank(run, runs, false, true);
+        if (rank == 1) {
+            return isTie? "Tied WR" : "Untied WR";
+        } else {
+            return ordinal(rank);
+        }
+    }
+}
+RECAP_COLUMNS.currentPlace = {
+    header: "Current",
+    text: function(run, runs) {
+        const isTie = runHasTie(run, runs, false);
+        const rank = getLeaderboardRank(run, runs, false, false);
+        if (rank == 1) {
+            return isTie? "Tied WR" : "Untied WR";
+        } else {
+            return ordinal(rank);
+        }
+    }
 }
 
 //////////////
@@ -3212,6 +3469,70 @@ function go() {
 
 }
 
+// Log all runs within date range for recap
+function getRecapTable() {
+
+    // Copied from generateLeaderboard()...
+    var categoryFilters = generateCategoryFilters();
+    var runSets = categoryFilters.map(filter => allRuns.filter(filter));
+
+    // Now...
+    runs = runSets.flat(1);
+    // console.log("runs", runs);
+    yearEnd = document.getElementById("date-end").value;
+    currentYear = (new Date(yearEnd)).getFullYear();
+    yearStart = `${currentYear}-01-01`;
+    console.log("logging runs from", yearStart, "to", yearEnd);
+    yearRuns = runs.filter(getRunsOnOrAfterDateFilter(yearStart));
+    yearRuns.sort(dateSortFunction);
+    var table = generateRecapTable(
+        yearRuns, 
+        runs, 
+        [
+            RECAP_COLUMNS.player,
+            RECAP_COLUMNS.game,
+            RECAP_COLUMNS.level,
+            RECAP_COLUMNS.category,
+            RECAP_COLUMNS.values,
+            RECAP_COLUMNS.time,
+            RECAP_COLUMNS.date,
+            RECAP_COLUMNS.src,
+            RECAP_COLUMNS.yt,
+            RECAP_COLUMNS.status,
+            // RECAP_COLUMNS.initialPersonalRank,
+            // RECAP_COLUMNS.currentPB,
+            // RECAP_COLUMNS.initialRank,
+            // RECAP_COLUMNS.currentRank,
+            // RECAP_COLUMNS.initialTie,
+            // RECAP_COLUMNS.currentTie,
+            RECAP_COLUMNS.initialPlace,
+            RECAP_COLUMNS.currentPlace
+        ]
+    );
+    return tableToSpreadsheetString(table);
+}
+
+function logRecapTable() {
+    string = getRecapTable();
+    console.log("RECAP TABLE:");
+    console.log(string);
+}
+
+function tableToSpreadsheetString(table) {
+    return table.map(data => data.join("\t")).join("\n");
+}
+
+function generateRecapTable(yearRuns, runs, columns) {
+    var headerRow = columns.map(column => column.header);
+    return [headerRow].concat(
+        yearRuns.map(
+            run => columns.map(
+                column => column.text(run, runs)
+            )
+        )
+    );
+}
+
 function generateTable() {
     var table = getTable();
     document.getElementById("table-container").textContent = '';
@@ -3285,6 +3606,7 @@ function generateLeaderboard() {
 
     // Generates a leaderboard for each of the categories included
     var runSets = categoryFilters.map(filter => allRuns.filter(filter));
+    // logRecapTable(runSets); - no longer needed, can use `Copy Year Data` button
     var mutExFunc = getComparison(getCompare(run => getPlayerDisplayName(run.players.data[0])))('=');
     if (leaderboardTypeSelector.value == "Recent Runs") {
         mutExFunc = getComparison(getCompare(run => run.id))('=');
@@ -3338,8 +3660,14 @@ function generateCategoryFilters() {
     var categoryFilters
     if (categoryScopeSelector.value == "Single Category") {
         categoryFilters = generateSingleCategoryFilters();
-    } else {
+    } else if (categoryScopeSelector.value == "Multiple Categories") {
         categoryFilters = generateMultipleCategoryFilters();
+    } else if (categoryScopeSelector.value == "All Runs") {
+        categoryFilters = generateAllCategoryFilters();
+    } else if (categoryScopeSelector.value == "Single Game") {
+        categoryFilters = generateSingleGameFilters();
+    } else {
+        throw Error("Unrecognised categoryScopeSelector.value");
     }
     return categoryFilters;
 }
@@ -3467,6 +3795,66 @@ function generateMultipleCategoryFilters() {
 
 }
 
+function generateAllCategoryFilters() {
+    
+    // Included statuses
+    var statuses = [];
+    for (const [name, node] of Object.entries(checkboxes.status)) {
+        if (node.checkbox.checked) {
+            statuses.push(name);
+        }
+    }
+
+    // Filters
+    var filters = [
+        getStatusFilter(statuses),
+        getRunsOnOrAfterDateFilter(document.getElementById("date-start").value),
+        getRunsOnOrBeforeDateFilter(document.getElementById("date-end").value)
+    ];
+    return [getFilterIntersection(filters)];
+}
+
+function generateSingleGameFilters() {
+
+    // Game
+    var game = gameSelector.value;
+
+    // Scope
+    var scopes = [];
+    for (const [name, node] of Object.entries(checkboxes.scope)) {
+        if (node.checkbox.checked) {
+            scopes.push(name);
+        }
+    }
+
+    // Platform
+    var platforms = [];
+    for (const [name, node] of Object.entries(checkboxes.platform)) {
+        if (node.checkbox.checked) {
+            platforms.push(name);
+        }
+    }
+    
+    // Included statuses
+    var statuses = [];
+    for (const [name, node] of Object.entries(checkboxes.status)) {
+        if (node.checkbox.checked) {
+            statuses.push(name);
+        }
+    }
+        
+    // Filters
+    var filters = [
+        getGameFilter(IDS.games[game]),
+        getStatusFilter(statuses),
+        getScopeFilter(scopes),
+        getPlatformFilter(platforms),
+        getRunsOnOrAfterDateFilter(document.getElementById("date-start").value),
+        getRunsOnOrBeforeDateFilter(document.getElementById("date-end").value)
+    ];
+    return [getFilterIntersection(filters)];
+}
+
 function rankItems(items, comparison, mutuallyExclusive) {
 
     // Filter and sort items
@@ -3500,6 +3888,104 @@ function rankItems(items, comparison, mutuallyExclusive) {
         leaderboard[i].place = place;
     }
     return leaderboard;
+}
+
+// Given a run, and allRuns, filters out a list of runs matching the given run subject to personal/initial conditions
+// - if personal is true, only considers runs by the same player
+// - if initial is true, only considers runs on or before the given run
+// - in all cases only considers runs that match the category and all variables (could be problematic for variables that don't split leaderboards)
+function getRunsToCompare(run, runs, personal=false, initial=false) {
+    filters = getLeaderboardFilters(run);
+    if (personal) {
+        filters.push(getPlayersFilter(run.players.data));
+    }
+    if (initial) {
+        filters.push(getRunsOnOrBeforeRunFilter(run));
+    }
+    return runs.filter(getFilterIntersection(filters));
+}
+
+// Given a list of runs from one category, removes obsolete runs
+function removeObsoleteRuns(runs, personal=false) {
+    var mutEx = getComparison(getCompare(run => playersIdentifier(run)))('=');
+    if (personal) {
+        mutEx = (arg1, arg2) => false;
+    }
+    return rankItems(
+        runs, 
+        getComparison(getCompare(run => run.times.primary_t))('<'), 
+        mutEx
+    ).map(entry => entry.item);
+}
+// PICKUP: calculate timesave? (difference between run0 and run in same place if run0 didn't exist, can be personal or general)
+// Calculate distance to WR? (can be initial or current)
+
+// Returns true if there is at least one run in `runs` which compares with `run0`.
+// - Use an equality comparison
+function tieExists(run0, runs, comparison) {
+    return runs.filter(run => comparison(run, run0)).length > runs.filter(run => run == run0).length;
+}
+
+// Given a run, and allRuns, determines whether there is a run in allRuns that ties with run
+// - if initial is true, runs after `run` are ignored
+function runHasTie(run, runs, initial) {
+    return tieExists(
+        run,
+        removeObsoleteRuns(getRunsToCompare(run, runs, false, initial)),
+        getComparison(getCompare(run => run.times.primary_t))('=')
+    )
+}
+
+// Determines the rank for an item with respect to a list of items
+function getRank(item, items, comparison, mutuallyExclusive) {
+    var leaderboard = rankItems(items, comparison, mutuallyExclusive);
+    itemEntries = leaderboard.filter(entry => entry.item == item);
+    if (itemEntries.length == 1) {
+        return itemEntries[0].place;
+    } else {
+        return "N/A";
+        // throw Error("getRank(): Item not found in ranked leaderboard.");
+    }
+}
+
+// Given a run, and allowable statuses, returns a set of filters needed to filter out runs that are comparable to it (i.e. belong in the same game, level, category and subcategory)
+function getLeaderboardFilters(run, statuses=["verified", "new"]) {
+    var level = run.level == ""? null : run.level;
+    var baseFilters = [
+        getGameFilter(run.game),
+        getLevelFilter(level),
+        getCategoryFilter(run.category),
+        getStatusFilter(statuses)
+    ];
+    var variables = [];
+    for (const subcategory of IDS.subcategories) {
+        var choiceArray = Object.values(subcategory.choices);
+        if (choiceArray.length == 0) {continue}
+        var choice0 = choiceArray[0];
+        if (Object.keys(run.values).includes(choice0.key)) {
+            variables.push({key: choice0.key, value: run.values[choice0.key]});
+        }
+    }
+    var variableFilters = variables.map(getVariableFilter);
+    return baseFilters.concat(variableFilters);
+}
+
+// Determines the rank for a certain run with respect to other runs in that category
+// - runs: list of runs to use, can be larger than just the category of `run`
+// - personal: if true, compares only to other runs by the same player
+// - initial: if true, returns the rank on the date the run was achieved
+function getLeaderboardRank(run, runs, personal=false, initial=false) {
+    var mutExFunc = getComparison(getCompare(run => getPlayersToString(run.players.data)))('=');
+    // var mutExFunc = getComparison(getCompare(run => getPlayerDisplayName(run.players.data[0])))('='); // old
+    if (personal) {
+        mutExFunc = (arg1, arg2) => false;
+    }
+    return getRank(
+        run, 
+        getRunsToCompare(run, runs, personal, initial),
+        getComparison(getCompare(run => run.times.primary_t))('<'),
+        mutExFunc
+    );
 }
 
 // Generates a dictionary containing the medal counts of each player from a set of leaderboards
@@ -3973,6 +4459,16 @@ function formatDate(date) {
     return day + " " + monthNames[Number(month) - 1] + " " + year;
 }
 
+// Ordinal function from
+// https://stackoverflow.com/questions/13627308/add-st-nd-rd-and-th-ordinal-suffix-to-a-number
+const ordinalRules = new Intl.PluralRules("en", {type: "ordinal"});
+const suffixes = {one: "st", two: "nd", few: "rd", other: "th"};
+function ordinal(n) {
+    if (isNaN(n)) {return n}
+    const category = ordinalRules.select(n);
+    return (n + suffixes[category]);
+}
+
 /////////////////////////////
 // NEW Player Name Display //
 /////////////////////////////
@@ -4017,4 +4513,7 @@ function getPlayerDisplayName(player) {
         console.warn("unknown player rel type", player);
         return "Unknown";
     }
+}
+function getPlayersToString(players) {
+    return players.map(getPlayerDisplayName).join(",");
 }

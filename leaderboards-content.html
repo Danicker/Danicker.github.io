@@ -24,28 +24,28 @@
             <!-- Selectors -->
             <h3>Leaderboard type</h3>
             <div id="leaderboard-type-selector-container"></div>
-
-            <div id="single-category-div">
-                <h3>Category</h3>
-                <div id="selection-container"></div>
-            </div>
             
-            <div id="multi-category-div" hidden="true">
-                <h3>Category Group</h3>
-                <div id="multi-category-div-inner">
-                    <div>
+            <div id="category-selection-div">
+                <h3 id="category-selection-heading">Category Group</h3>
+                <div id="selection-container"></div>
+                <div id="multi-category-div-inner" hidden="true">
+                    <div id="checkboxes-games-div">
                         <h4>Games</h4>
                         <div id="checkboxes-games" class="checkbox-column"></div>
                     </div>
-                    <div>
+                    <div id="checkboxes-scope-div">
                         <h4>Scope</h4>
                         <div id="checkboxes-scope" class="checkbox-column"></div>
                     </div>
-                    <div>
+                    <div id="checkboxes-platform-div" hidden="true">
+                        <h4>Platform</h4>
+                        <div id="checkboxes-platform" class="checkbox-column"></div>
+                    </div>
+                    <div id="checkboxes-categories-main-div">
                         <h4>Main Categories</h4>
                         <div id="checkboxes-categories-main" class="checkbox-column"></div>
                     </div>
-                    <div>
+                    <div id="checkboxes-categories-glitched-div">
                         <h4>Glitched Categories</h4>
                         <div id="checkboxes-categories-glitched" class="checkbox-column"></div>
                     </div>
@@ -85,6 +85,7 @@
             <button id="go-button">Generate</button>
             <button id="share-button">Copy Link</button>
             <button id="refresh-button">Refresh</button>
+            <button id="recap-button">Copy Year Data</button>
             <br>
     
             <!-- Graphics -->
